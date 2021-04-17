@@ -1,0 +1,57 @@
+/* Carousel base class */
+.carousel {
+    height: 700px;
+    margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    z-index: 10;
+}
+
+/* Setting size of the image */
+.carousel-inner > .carousel-item > img {
+    /* margin-left: 15px;
+    margin-right: 15px; */
+    height: 740px;
+}
+.carousel-indicators li {
+    height: 5px;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    width: 44px;
+    height: 55px;
+}
+
+.carousel-fade {
+    .carousel-inner {
+        .item {
+            transition-property: opacity;
+        }
+
+        .item,
+        .active.left,
+        .active.right {
+            opacity: 0;
+        }
+
+        .active,
+        .next.left,
+        .prev.right {
+            opacity: 1;
+        }
+
+        .next,
+        .prev,
+        .active.left,
+        .active.right {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .carousel-control {
+        z-index: 2;
+    }
+}
+
