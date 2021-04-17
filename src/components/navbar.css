@@ -20,18 +20,18 @@ nav{
 }
 
 /*Styling logo*/
-.logo{
+nav .logo{
     padding:1vh 2vw;
     text-align: center;
     margin-block: auto;
 }
-.logo img {
+nav .logo img {
     height: 4rem;
     width: 4rem;
 }
 
 /*Styling Links*/
-.nav-links{
+nav .nav-links{
     display: flex;
     list-style: none; 
     width: 88vw;
@@ -41,18 +41,18 @@ nav{
     align-items: center;
     text-transform: uppercase;
 }
-.nav-links li a{
+nav .nav-links li a{
     text-decoration: none;
     color: rgba(255,255,255,0.7);
     margin: 0 0.7vw;
 }
-.nav-links li a:hover {
+nav .nav-links li a:hover {
     color: rgba(255,255,255,1);
 }
-.nav-links li {
+nav .nav-links li {
     position: relative;
 }
-.nav-links li a:after {
+nav .nav-links li a:after {
     content: "";
     display: block;
     height: 3px;
@@ -62,19 +62,19 @@ nav{
     transition: all ease-in-out 250ms;
     margin: 0 0 0 10%;
 }
-.nav-links li a:hover::after{
+nav .nav-links li a:hover::after{
     width: 80%;
 }
 
 /*Styling Hamburger Icon*/
-.hamburger div{
+nav .hamburger div{
     width: 30px;
     height:3px;
     background: #f2f5f7;
     margin: 5px;
     transition: all 0.5s ease;
 }
-.hamburger{
+nav .hamburger{
     display: none;
 }
 
@@ -84,7 +84,7 @@ nav{
         position: fixed;
         z-index: 3;
     }
-    .hamburger{
+    nav .hamburger{
         display:block;
         position: absolute;
         cursor: pointer;
@@ -94,7 +94,7 @@ nav{
         z-index: 2;
         transition: all 0.7s ease;
     }
-    .nav-links{
+    nav .nav-links{
         position: fixed;
         background: #131418;
         opacity: 0.9;
@@ -106,53 +106,54 @@ nav{
         transition: all 1s ease-out;
         pointer-events: none;
     }
-    .nav-links.open{
+    nav .nav-links.open{
         clip-path: circle(1200px at 90% -10%);
         -webkit-clip-path: circle(1200px at 90% -10%);
         pointer-events: all;
     }
-    .nav-links li{
+    nav .nav-links li{
         opacity: 0;
     }
-    .nav-links li:nth-child(1){
+    nav .nav-links li:nth-child(1){
         transition: all 0.5s ease 0.2s;
     }
-    .nav-links li:nth-child(2){
+    nav .nav-links li:nth-child(2){
         transition: all 0.5s ease 0.4s;
     }
-    .nav-links li:nth-child(3){
+    nav .nav-links li:nth-child(3){
         transition: all 0.5s ease 0.6s;
     }
-    .nav-links li:nth-child(4){
+    nav .nav-links li:nth-child(4){
         transition: all 0.5s ease 0.7s;
     }
-    .nav-links li:nth-child(5){
+    nav .nav-links li:nth-child(5){
         transition: all 0.5s ease 0.8s;
     }
-    .nav-links li:nth-child(6){
+    nav .nav-links li:nth-child(6){
         transition: all 0.5s ease 0.9s;
         margin: 0;
     }
-    .nav-links li:nth-child(7){
+    nav .nav-links li:nth-child(7){
         transition: all 0.5s ease 1s;
         margin: 0;
     }
-    li.fade{
+    nav li.fade{
         opacity: 1;
     }
 }
-.fade{
+nav .fade{
     opacity: 1 !important;
     margin-bottom: 1rem;
 }
 /*Animating Hamburger Icon on Click*/
-.toggle .line1{
+nav .toggle .line1{
     transform: rotate(-45deg) translate(-5px,6px);
 }
-.toggle .line2{
+nav .toggle .line2{
     transition: all 0s ease;
     width:0;
 }
-.toggle .line3{
+nav .toggle .line3{
     transform: rotate(45deg) translate(-5px,-6px);
 }
+
