@@ -10,7 +10,8 @@ function App() {
           <Navbar/>
           <Slider/>
         </React.Fragment>
-    );
+  );
+
 }
 
 export default App;
