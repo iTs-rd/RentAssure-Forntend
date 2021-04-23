@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Home from "./components/pages/Home";
 import Services from "./components/pages/Services";
@@ -8,14 +8,14 @@ import Flat from "./components/pages/Flat";
 import Room from "./components/pages/Room";
 import ContactUs from "./components/pages/ContactUs";
 import AboutUs from "./components/pages/Aboutus";
-import Navbar from "./components/navbar";
+import Navbar from "./components/pages/navbar";
 
 function App() {
     return (
         <React.Fragment>
             <Router>
                 {/* Navbar is provided as global as it is required for every page */}
-                <Navbar />
+                {/* <Navbar /> */}
                 {/* This will help in switching through pages and components are provided in components/pages */}
                 <Switch>
                     <Route path="/" exact component={Home} />
@@ -25,10 +25,10 @@ function App() {
                     <Route path="/room" component={Room} />
                     <Route path="/contactus" component={ContactUs} />
                     <Route path="/aboutus" component={AboutUs} />
+                    <Redirect to="/" />
                 </Switch>
             </Router>
 
-            {/* <Navbar/> */}
         </React.Fragment>
     );
 }
