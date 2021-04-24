@@ -4,7 +4,7 @@ import HomePageCard from './HomePageCard'
 function Home() {
     return (
         <div>
-            {/* <Slider /> */}
+            <Slider />
             <div className="row">
                 <div className="col-3 d-none d-md-block">
                 {/* filter component */}

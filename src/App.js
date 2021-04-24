@@ -15,7 +15,7 @@ function App() {
         <React.Fragment>
             <Router>
                 {/* Navbar is provided as global as it is required for every page */}
-                {/* <Navbar /> */}
+                <Navbar />
                 {/* This will help in switching through pages and components are provided in components/pages */}
                 <Switch>
                     <Route path="/" exact component={Home} />
@@ -28,7 +28,6 @@ function App() {
                     <Redirect to="/" />
                 </Switch>
             </Router>
-
         </React.Fragment>
     );
 }
