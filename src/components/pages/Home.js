@@ -11,7 +11,7 @@ function Home() {
                 </div>
                 <div className="col-12 col-md-9 ">
                     {/* Card of each prodict */}
-                    <HomePageCard id='2'/>
+                    {/* <HomePageCard id='2'/> */}
                 </div>
             </div>
         </div>

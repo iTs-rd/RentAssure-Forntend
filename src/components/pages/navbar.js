@@ -1,62 +1,77 @@
-import "../css/navbar.css";
-import logo from "../assets/images/logo.png";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import logo from "../assets/images/logo.png";
+import "../css/navbar.css";
+
+
 
 function Navbar() {
-    useEffect(() => {
-        const hamburger = document.querySelector(".hamburger");
-        const navLinks = document.querySelector(".nav-links");
-        const links = document.querySelectorAll(".nav-links li");
 
-        hamburger.addEventListener("click", () => {
-            //    Animate Links
-            navLinks.classList.toggle("open");
-            links.forEach((link) => {
-                link.classList.toggle("fade");
-                console.log("face class");
-            });
+    useEffect(()=>{
+        // document.getElementsByClassName("hamburger")[0].addEventListener("click",() =>{alert("hii")});
+    },[])
 
-            //Hamburger Animation
-            hamburger.classList.toggle("toggle");
-            console.log("listener complete");
-        });
-    }, []);
-
-    return (
+    return(
         <div>
-            <nav>
-                <div class="logo">
-                    <img src={logo} alt="RentAssure" />
+            <nav class="navbar navbar-expand-sm d-flex justify-content-sm-between ">
+                <a class="navbar-brand" href="{#}"><img src={logo} alt="RentAssure"/> </a>
+                <button id="nav-collaps-button" className=" navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" data-toggle="modal" data-target="#navbar-model">
+                    <div class="hamburger">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                        <div class="line3"></div>
+                    </div>
+                </button>
+
+                <div class="d-none d-sm-block mx-3" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item ">
+                            <a class="nav-link active" href="{#}"><i class="fas fa-home"></i>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{#}"><i class="fas fa-info"></i>About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{#}"><i class="fas fa-shopping-cart"></i>Rent</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{#}"><i class="fas fa-comments"></i>Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{#}"><i class="fas fa-sign-in-alt"></i>Signin</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="hamburger">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
-                <ul class="nav-links d-flex justify-content-center justify-content-sm-end">
-                    <li class="nav-item">
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link to="/house">House</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link to="/flat">Flat</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link to="/room">Room</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link to="/aboutus">About</Link>
-                    </li>
-                    <li class="nav-item">
-                        <Link to="/contactus">Contact Us</Link>
-                    </li>
-                </ul>
             </nav>
+            <div id="navbar-model" class="modal fade " role="dialog">
+                <div class="modal-dialog modal-lg" role="content">
+                    <div class="modal-content">
+                        {/* <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div> */}
+                        <div class="modal-body">
+                            <ul class="navbar-nav">
+                                <li class="nav-item ">
+                                    <a class="nav-link active" href="{#}"><i class="fas fa-home"></i>Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{#}"><i class="fas fa-info"></i>About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{#}"><i class="fas fa-shopping-cart"></i>Rent</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="{#}"><i class="fas fa-comments"></i>Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link " href="{#}"><i class="fas fa-sign-in-alt"></i>Signin</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
 
-export default Navbar;
+export default Navbar
