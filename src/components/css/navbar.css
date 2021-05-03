@@ -1,15 +1,15 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    color: #f2f5f7;
+    color: black;
     font-family: sans-serif;
     letter-spacing: 1px;
     font-weight: 300;
 }
-body{
+body {
     overflow-x: hidden;
 }
-nav{
+nav {
     height: 5rem;
     width: 100vw;
     background-color: #131418;
@@ -20,8 +20,8 @@ nav{
 }
 
 /*Styling logo*/
-nav .logo{
-    padding:1vh 2vw;
+nav .logo {
+    padding: 1vh 2vw;
     text-align: center;
     margin-block: auto;
 }
@@ -31,9 +31,9 @@ nav .logo img {
 }
 
 /*Styling Links*/
-nav .nav-links{
+nav .nav-links {
     display: flex;
-    list-style: none; 
+    list-style: none;
     width: 88vw;
     padding: 0 0.7vw;
     margin: 0;
@@ -41,13 +41,13 @@ nav .nav-links{
     align-items: center;
     text-transform: uppercase;
 }
-nav .nav-links li a{
+nav .nav-links li a {
     text-decoration: none;
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     margin: 0 0.7vw;
 }
 nav .nav-links li a:hover {
-    color: rgba(255,255,255,1);
+    color: rgba(255, 255, 255, 1);
 }
 nav .nav-links li {
     position: relative;
@@ -62,30 +62,30 @@ nav .nav-links li a:after {
     transition: all ease-in-out 250ms;
     margin: 0 0 0 10%;
 }
-nav .nav-links li a:hover::after{
+nav .nav-links li a:hover::after {
     width: 80%;
 }
 
 /*Styling Hamburger Icon*/
-nav .hamburger div{
+nav .hamburger div {
     width: 30px;
-    height:3px;
+    height: 3px;
     background: #f2f5f7;
     margin: 5px;
     transition: all 0.5s ease;
 }
-nav .hamburger{
+nav .hamburger {
     display: none;
 }
 
 /*Stying for small screens*/
-@media screen and (max-width: 576px){
-    nav{
+@media screen and (max-width: 576px) {
+    nav {
         position: fixed;
         z-index: 3;
     }
-    nav .hamburger{
-        display:block;
+    nav .hamburger {
+        display: block;
         position: absolute;
         cursor: pointer;
         right: 5%;
@@ -94,7 +94,7 @@ nav .hamburger{
         z-index: 2;
         transition: all 0.7s ease;
     }
-    nav .nav-links{
+    nav .nav-links {
         position: fixed;
         background: #131418;
         opacity: 0.9;
@@ -106,54 +106,53 @@ nav .hamburger{
         transition: all 1s ease-out;
         pointer-events: none;
     }
-    nav .nav-links.open{
+    nav .nav-links.open {
         clip-path: circle(1200px at 90% -10%);
         -webkit-clip-path: circle(1200px at 90% -10%);
         pointer-events: all;
     }
-    nav .nav-links li{
+    nav .nav-links li {
         opacity: 0;
     }
-    nav .nav-links li:nth-child(1){
+    nav .nav-links li:nth-child(1) {
         transition: all 0.5s ease 0.2s;
     }
-    nav .nav-links li:nth-child(2){
+    nav .nav-links li:nth-child(2) {
         transition: all 0.5s ease 0.4s;
     }
-    nav .nav-links li:nth-child(3){
+    nav .nav-links li:nth-child(3) {
         transition: all 0.5s ease 0.6s;
     }
-    nav .nav-links li:nth-child(4){
+    nav .nav-links li:nth-child(4) {
         transition: all 0.5s ease 0.7s;
     }
-    nav .nav-links li:nth-child(5){
+    nav .nav-links li:nth-child(5) {
         transition: all 0.5s ease 0.8s;
     }
-    nav .nav-links li:nth-child(6){
+    nav .nav-links li:nth-child(6) {
         transition: all 0.5s ease 0.9s;
         margin: 0;
     }
-    nav .nav-links li:nth-child(7){
+    nav .nav-links li:nth-child(7) {
         transition: all 0.5s ease 1s;
         margin: 0;
     }
-    nav li.fade{
+    nav li.fade {
         opacity: 1;
     }
 }
-nav .fade{
+nav .fade {
     opacity: 1 !important;
     margin-bottom: 1rem;
 }
 /*Animating Hamburger Icon on Click*/
-nav .toggle .line1{
-    transform: rotate(-45deg) translate(-5px,6px);
+nav .toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
 }
-nav .toggle .line2{
+nav .toggle .line2 {
     transition: all 0s ease;
-    width:0;
+    width: 0;
 }
-nav .toggle .line3{
-    transform: rotate(45deg) translate(-5px,-6px);
+nav .toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
-

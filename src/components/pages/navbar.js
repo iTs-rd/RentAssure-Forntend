@@ -1,6 +1,7 @@
-import "./navbar.css";
-import logo from "./assets/images/logo.png";
+import "../css/navbar.css";
+import logo from "../assets/images/logo.png";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
     useEffect(() => {
@@ -34,20 +35,23 @@ function Navbar() {
                     <div class="line3"></div>
                 </div>
                 <ul class="nav-links d-flex justify-content-center justify-content-sm-end">
-                    <li>
-                        <a href="#">Home</a>
+                    <li class="nav-item">
+                        <Link to="/">Home</Link>
                     </li>
-                    <li>
-                        <a href="#">House</a>
+                    <li class="nav-item">
+                        <Link to="/house">House</Link>
                     </li>
-                    <li>
-                        <a href="#">Flat</a>
+                    <li class="nav-item">
+                        <Link to="/flat">Flat</Link>
                     </li>
-                    <li>
-                        <a href="#">Room</a>
+                    <li class="nav-item">
+                        <Link to="/room">Room</Link>
                     </li>
-                    <li>
-                        <a href="#">Contact Us</a>
+                    <li class="nav-item">
+                        <Link to="/aboutus">About</Link>
+                    </li>
+                    <li class="nav-item">
+                        <Link to="/contactus">Contact Us</Link>
                     </li>
                 </ul>
             </nav>

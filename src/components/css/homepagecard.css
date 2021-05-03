@@ -1,0 +1,44 @@
+
+.col-9{
+  border-style: double;
+  border-color: black;
+  background-color: lightgrey;
+ 
+}
+.col-9  h2{
+    align-items: center;
+    text-align: center;
+}
+.col-3{
+    border-style: double;
+    border-color:black;
+    background-color: lightgray;
+}
+
+.col-3 img{
+    border: none;
+    /* display: flex; */
+    width: 106%;
+}
+.bhati h3{
+    display: inline;
+}
+.area{
+    text-align: right;
+    margin-left: 150px;
+}
+.jjj h3{
+    display: inline;
+}
+.hsj{
+    margin-left: 100px;
+}
+.last h3{
+    text-align: center;
+}
+.details{
+    margin-top: 20px;
+}
+
+
+
