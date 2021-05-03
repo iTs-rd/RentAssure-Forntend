@@ -31,7 +31,6 @@ function App() {
                     <Redirect to="/" />
                 </Switch>
             </Router>
-
         </React.Fragment>
     );
 }
