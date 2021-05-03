@@ -6,36 +6,29 @@ function ContactUs() {
         <React.Fragment>
             <section>
                 <div class="container">
-                    <div class="contactinfo">
-                        <div>
+                    <div class="wrapper">
+                        <div class="contact-info">
                             <h2>Contact Info</h2>
+
                             <ul class="info">
                                 <li>
-                                    <span>
-                                        <ion-icon name="location-outline" size="large"></ion-icon>
-                                    </span>
-                                    <span id="detail">
-                                        2252 Brooklyn Street
-                                        <br />
-                                        Washington, USA
-                                        <br />
-                                        92313
-                                    </span>
+                                    <i class="fa fa-road fa-2x"></i> 2252 Brooklyn Street
+                                    <br />
+                                    Washington, USA
+                                    <br />
+                                    92313
                                 </li>
+                                <br />
                                 <li>
-                                    <span>
-                                        <ion-icon name="mail-outline" size="large"></ion-icon>
-                                    </span>
-                                    <span id="detail"> lorem@ipsum.com</span>
+                                    <i class="fa fa-envelope fa-2x"></i> lorem@ipsum.com
                                 </li>
+                                <br />
                                 <li>
-                                    <span>
-                                        <ion-icon name="call-outline" size="large"></ion-icon>
-                                    </span>
-                                    <span id="detail">+91-8858896086</span>
+                                    <i class="fa fa-phone fa-2x"></i> +918858896086
                                 </li>
                             </ul>
                             <ul class="sci">
+                                <br />
                                 <li>
                                     <a href="#" alt="Facebook">
                                         <ion-icon name="logo-facebook" size="large"></ion-icon>
@@ -63,33 +56,35 @@ function ContactUs() {
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                    <div class="contactForm">
-                        <h2>Send Message</h2>
-                        <div class="formBox">
-                            <div class="inputBox w50">
-                                <input type="text" name="" placeholder="First Name" required />
-                                <span>First Name</span>
-                            </div>
-                            <div class="inputBox w50">
-                                <input id="lastName" type="text" name="" placeholder="Last Name" required />
-                                <span>Last Name</span>
-                            </div>
-                            <div class="inputBox w50">
-                                <input id="mobileNumber" type="text" name="" placeholder="Mobile Number" size="10" required />
-                                <span>Mobile Number</span>
-                            </div>
-                            <div class="inputBox w50">
-                                <input id="emailId" type="text" name="" placeholder="Email Address" required />
-                                <span>Email Address</span>
-                            </div>
-                            <div class="inputBox w100">
-                                <textarea name="" placeholder="Write your message here..." required></textarea>
-                                <span>Write your message here...</span>
-                            </div>
-                            <div class="inputBox w100">
-                                <input type="submit" value="Send"></input>
-                            </div>
+
+                        <div class="contact">
+                            <h2>Send Message</h2>
+
+                            <form id="contact-form">
+                                <p>
+                                    <label>Name</label>
+                                    <input type="text" name="name" id="name" required />
+                                </p>
+
+                                <p>
+                                    <label>E-mail Address</label>
+                                    <input type="email" name="email" id="email" required />
+                                </p>
+
+                                <p>
+                                    <label>Mobile Number</label>
+                                    <input type="text" name="mobileNumber" id="mobileNumber" />
+                                </p>
+
+                                <p class="full">
+                                    <label>Write your message here...</label>
+                                    <textarea name="message" rows="5" id="message"></textarea>
+                                </p>
+
+                                <p class="full">
+                                    <button type="submit">Submit</button>
+                                </p>
+                            </form>
                         </div>
                     </div>
                 </div>

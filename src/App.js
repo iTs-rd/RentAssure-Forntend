@@ -8,14 +8,12 @@ import Flat from "./components/pages/Flat";
 import Room from "./components/pages/Room";
 import ContactUs from "./components/pages/ContactUs";
 import AboutUs from "./components/pages/Aboutus";
-import Navbar1 from "./components/pages/navbar1";
-import Navbar from "./components/pages/NavBar";
+import Navbar from "./components/pages/Navbar";
 
 function App() {
     return (
         <React.Fragment>
             <Router>
-                {/* Navbar is provided as global as it is required for every page */}
                 <Navbar />
                 {/* This will help in switching through pages and components are provided in components/pages */}
                 <Switch>
@@ -29,7 +27,6 @@ function App() {
                     <Redirect to="/" />
                 </Switch>
             </Router>
-
         </React.Fragment>
     );
 }

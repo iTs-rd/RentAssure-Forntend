@@ -1,34 +1,35 @@
-.navbar-brand img {
+.navbarclass .navbar-brand img {
     height: 3rem;
 }
 
-.nav-item{
-    margin-inline: 7px;
+.navbarclass .nav-item{
+    margin-inline: 4px;
     align-self: center;
 }
 
-.navbar-expand-sm .navbar-nav .nav-link{
+.navbarclass .nav-link{
     /* color: rgba(255, 255, 255, 0.7); */
     color: rgba(0,0,0,0.7);
 }
 
-.navbar-expand-sm .navbar-nav .nav-link:hover,.active{
+.navbarclass .nav-link:hover,.active{
     /* color: rgba(255, 255, 255, 1) !important; */
     color: rgba(0,0,0,1);
 }
 
-nav{
+.navbarclass nav{
     height: 3.5rem;
-    background-color: rgba(0,0,0,0) !important;
+    /* background-color: rgba(0,0,0,0) !important; */
     box-shadow: 0 0 0 rgb(0 0 0 / 20%);
+    margin-bottom: 2rem;
 }
 
-nav .navbar-nav li a i {
+.navbarclass .navbar-nav li a i {
     color: inherit;
     margin-right: 3px;
 }
 
-nav .navbar-nav li a:after {
+.navbarclass .navbar-nav li a:after {
     content: "";
     display: block;
     height: 2px;
@@ -37,24 +38,20 @@ nav .navbar-nav li a:after {
     transition: all ease-in-out 200ms;
     margin: 0 0 0 0;
 }
-nav .navbar-nav li a:hover::after {
+.navbarclass .navbar-nav li a:hover::after {
     width: 100%;
 }
 .navbar {
-    position: absolute;
+    position: relative;
 }
 
-nav .hamburger div {
-    /* background: rgba(0,0,0,0.8) ; */
-    background: #2e2c2b;
-}
 
-.modal-content {
+nav .modal-content {
     margin-top: 40vw;
     background-color: rgba(0,0,0,0);
     border: none;
 }
 
-.modal-body a i,.modal-body a  {
+nav .modal-body a i,nav .modal-body a  {
     color: rgba(255,255,255,1)
 }
