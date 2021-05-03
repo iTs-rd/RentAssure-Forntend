@@ -1,158 +1,57 @@
-* {
-    margin: 0;
-    padding: 0;
-    color: black;
-    font-family: sans-serif;
-    letter-spacing: 1px;
-    font-weight: 300;
-}
-body {
-    overflow-x: hidden;
-}
-nav {
-    height: 5rem;
-    width: 100vw;
-    background-color: #131418;
-    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.2);
-    display: flex;
-    position: fixed;
-    z-index: 10;
+.navbarclass .navbar-brand img {
+    height: 3rem;
 }
 
-/*Styling logo*/
-nav .logo {
-    padding: 1vh 2vw;
-    text-align: center;
-    margin-block: auto;
-}
-nav .logo img {
-    height: 4rem;
-    width: 4rem;
+.navbarclass .nav-item{
+    margin-inline: 4px;
+    align-self: center;
 }
 
-/*Styling Links*/
-nav .nav-links {
-    display: flex;
-    list-style: none;
-    width: 88vw;
-    padding: 0 0.7vw;
-    margin: 0;
-    justify-content: space-evenly;
-    align-items: center;
-    text-transform: uppercase;
+.navbarclass .nav-link{
+    /* color: rgba(255, 255, 255, 0.7); */
+    color: rgba(0,0,0,0.7);
 }
-nav .nav-links li a {
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 0 0.7vw;
+
+.navbarclass .nav-link:hover,.active{
+    /* color: rgba(255, 255, 255, 1) !important; */
+    color: rgba(0,0,0,1);
 }
-nav .nav-links li a:hover {
-    color: rgba(255, 255, 255, 1);
+
+.navbarclass nav{
+    height: 3.5rem;
+    /* background-color: rgba(0,0,0,0) !important; */
+    box-shadow: 0 0 0 rgb(0 0 0 / 20%);
+    margin-bottom: 2rem;
 }
-nav .nav-links li {
-    position: relative;
+
+.navbarclass .navbar-nav li a i {
+    color: inherit;
+    margin-right: 3px;
 }
-nav .nav-links li a:after {
+
+.navbarclass .navbar-nav li a:after {
     content: "";
     display: block;
-    height: 3px;
+    height: 2px;
     width: 0%;
     background-color: red;
-    position: absolute;
-    transition: all ease-in-out 250ms;
-    margin: 0 0 0 10%;
+    transition: all ease-in-out 200ms;
+    margin: 0 0 0 0;
 }
-nav .nav-links li a:hover::after {
-    width: 80%;
+.navbarclass .navbar-nav li a:hover::after {
+    width: 100%;
 }
-
-/*Styling Hamburger Icon*/
-nav .hamburger div {
-    width: 30px;
-    height: 3px;
-    background: #f2f5f7;
-    margin: 5px;
-    transition: all 0.5s ease;
-}
-nav .hamburger {
-    display: none;
+.navbar {
+    position: relative;
 }
 
-/*Stying for small screens*/
-@media screen and (max-width: 576px) {
-    nav {
-        position: fixed;
-        z-index: 3;
-    }
-    nav .hamburger {
-        display: block;
-        position: absolute;
-        cursor: pointer;
-        right: 5%;
-        top: 50%;
-        transform: translate(-5%, -50%);
-        z-index: 2;
-        transition: all 0.7s ease;
-    }
-    nav .nav-links {
-        position: fixed;
-        background: #131418;
-        opacity: 0.9;
-        height: 100vh;
-        width: 100%;
-        flex-direction: column;
-        clip-path: circle(50px at 90% -20%);
-        -webkit-clip-path: circle(50px at 90% -10%);
-        transition: all 1s ease-out;
-        pointer-events: none;
-    }
-    nav .nav-links.open {
-        clip-path: circle(1200px at 90% -10%);
-        -webkit-clip-path: circle(1200px at 90% -10%);
-        pointer-events: all;
-    }
-    nav .nav-links li {
-        opacity: 0;
-    }
-    nav .nav-links li:nth-child(1) {
-        transition: all 0.5s ease 0.2s;
-    }
-    nav .nav-links li:nth-child(2) {
-        transition: all 0.5s ease 0.4s;
-    }
-    nav .nav-links li:nth-child(3) {
-        transition: all 0.5s ease 0.6s;
-    }
-    nav .nav-links li:nth-child(4) {
-        transition: all 0.5s ease 0.7s;
-    }
-    nav .nav-links li:nth-child(5) {
-        transition: all 0.5s ease 0.8s;
-    }
-    nav .nav-links li:nth-child(6) {
-        transition: all 0.5s ease 0.9s;
-        margin: 0;
-    }
-    nav .nav-links li:nth-child(7) {
-        transition: all 0.5s ease 1s;
-        margin: 0;
-    }
-    nav li.fade {
-        opacity: 1;
-    }
+
+nav .modal-content {
+    margin-top: 40vw;
+    background-color: rgba(0,0,0,0);
+    border: none;
 }
-nav .fade {
-    opacity: 1 !important;
-    margin-bottom: 1rem;
-}
-/*Animating Hamburger Icon on Click*/
-nav .toggle .line1 {
-    transform: rotate(-45deg) translate(-5px, 6px);
-}
-nav .toggle .line2 {
-    transition: all 0s ease;
-    width: 0;
-}
-nav .toggle .line3 {
-    transform: rotate(45deg) translate(-5px, -6px);
+
+nav .modal-body a i,nav .modal-body a  {
+    color: rgba(255,255,255,1)
 }

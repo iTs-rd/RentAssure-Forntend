@@ -9,16 +9,20 @@ import Flat from "./components/pages/Flat";
 import Room from "./components/pages/Room";
 import ContactUs from "./components/pages/ContactUs";
 import AboutUs from "./components/pages/Aboutus";
-import Navbar from "./components/pages/navbar";
 import  HomePageCard from "./components/pages/HomePageCard";
+import Navbar from "./components/pages/Navbar";
 
 function App() {
     return (
         <React.Fragment>
             <Router>
+
                 {/* Navbar is provided as global as it is required for every page */}
                 {/* <Navbar /> */}
                 {/* <HomePageCard></HomePageCard> */}
+
+                <Navbar />
+
                 {/* This will help in switching through pages and components are provided in components/pages */}
                 <Switch>
                     <Route path="/" exact component={Home} />
