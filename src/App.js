@@ -17,14 +17,14 @@ function App() {
                 <Navbar />
                 {/* This will help in switching through pages and components are provided in components/pages */}
                 <Switch>
-                    <Route path="/" exact component={Home} />
+                    <Route exact path="/" component={Home} />
                     <Route path="/services" component={Services} />
                     <Route path="/house" component={House} />
                     <Route path="/flat" component={Flat} />
                     <Route path="/room" component={Room} />
                     <Route path="/contactus" component={ContactUs} />
                     <Route path="/aboutus" component={AboutUs} />
-                    <Redirect to="/" />
+                    {/* <Redirect to="/" /> */}
                 </Switch>
             </Router>
         </React.Fragment>

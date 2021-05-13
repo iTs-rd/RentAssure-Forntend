@@ -61,13 +61,17 @@ a:focus {
     color: #888;
     border-top: 0 none;
 }
-.panel-title{
+.panel-title {
     margin-bottom: 0;
 }
-.panel-group{
+.panel-group {
     border: 1px solid #ced4dd;
     border-radius: 8px;
     padding-inline: 10px;
     /* padding-bottom: 0; */
     background-color: white;
+}
+.form-group {
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
