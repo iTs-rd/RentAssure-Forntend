@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import '../css/HomePageCard.css'
 
-function HomePageCard(props) {
-    const [house, setHouse] = useState({});
-
 function HomePageCard() {
     var start=1
     var end=15
     const [products, setProduct] = useState([]);
-
     useEffect(() => {
         fetch(`http://127.0.0.1:8000/api/datalist/`,{
             method:'GET',
@@ -58,19 +54,13 @@ function HomePageCard() {
     }
 
     return(
-
-        
-
         <div className="homepagecard">
 
             {/* {console.log(products)} */}
             {/* {CreateCard(products)} */}
             {products.map(product => CreateCard(product))}
-
         </div>
-    // </div>
     );
- 
 }
 
-export default homePageCard;
+export default HomePageCard;

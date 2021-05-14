@@ -10,7 +10,7 @@ import Room from "./components/pages/Room";
 import ContactUs from "./components/pages/ContactUs";
 import AboutUs from "./components/pages/Aboutus";
 import  HomePageCard from "./components/pages/HomePageCard";
-import Navbar from "./components/pages/Navbar";
+import Navbar from "./components/pages/navbar";
 
 function App() {
     return (
