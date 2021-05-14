@@ -54,6 +54,9 @@ ul {
 .wrapper > * {
     padding: 1em;
 }
+#popover {
+    z-index: 10000;
+}
 
 /* ------------------- */
 /* COMPANY INFORMATION */
@@ -125,6 +128,15 @@ section .container .wrapper .contact-info .sci li:hover a ion-icon {
     border-bottom-right-radius: 4px;
 }
 
+/* ----------- */
+/* INFO ICON */
+/* ----------- */
+
+#info {
+    position: absolute;
+    top: 200px;
+}
+
 /* ---- */
 /* FORM */
 /* ---- */
@@ -153,6 +165,7 @@ section .container .wrapper .contact-info .sci li:hover a ion-icon {
     opacity: 1;
 }
 
+
 .contact form p {
     margin: 0;
 }
@@ -176,7 +189,7 @@ section .container .wrapper .contact-info .sci li:hover a ion-icon {
     resize: none;
     padding: 5px 0;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 900;
     color: rgba(133, 83, 83, 0.801);
     outline: none;
     filter: invert(0.15);
@@ -231,5 +244,10 @@ section .container .wrapper .contact-info .sci li:hover a ion-icon {
     .company-info ul,
     .brand {
         text-align: left;
+    }
+
+    p .full .btn {
+        font-weight: 900;
+        color: rgb(12, 12, 12);
     }
 }
