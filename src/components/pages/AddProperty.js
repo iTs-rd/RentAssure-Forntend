@@ -68,13 +68,14 @@ class AddProperty extends Component{
 
 
     componentDidMount(){
-        fetch(`${process.env.REACT_APP_API_URL}/api/user/`, {
+        fetch(`${process.env.REACT_APP_API_URL}/api/viewuser/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Token ${this.state.token}`,
             },
         }).then(resp => resp.json()).then(res=>{
+            console.log(res)
             if(res.message==='ok')
                 this.setState({
                     user:res.result.id
@@ -117,7 +118,7 @@ class AddProperty extends Component{
             if(res.message==='ok')
             {
                 alert("posted");
-                // window.location.href = '/';
+                window.location.href = '/';
             }
             else
                 alert("something went wrong")

@@ -42,7 +42,7 @@ function Profile(){
     const ShowProfile=()=>{
         if(user!=null)
             return(
-                <div className="container">
+                <div className="">
                     <button onClick={logout} type="button" class="btn btn-danger">logout</button>
                     <br/><br/>
                     <button onClick={() => window.location.href="/profile/properties"} type="button" class="btn btn-primary">List property</button>

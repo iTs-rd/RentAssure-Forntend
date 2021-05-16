@@ -13,7 +13,7 @@ function ShowUserProperty(props){
     },[token])
 
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_API_URL}/api/user/`, {
+        fetch(`${process.env.REACT_APP_API_URL}/api/viewuser/`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.cjs";
 import "../css/ContactUs.css";
 
 class ContactUs extends Component {
@@ -14,6 +18,26 @@ class ContactUs extends Component {
         this.submitForm = this.submitForm.bind(this);
     }
 
+    //Alert
+    EmailTooltip() {
+        return (
+            <span
+                style={{
+                    position: "relative",
+                    display: "grid",
+                    color: "whitesmoke",
+                    background: "black",
+                    opacity: 0.8,
+                    marginBottom: "20px",
+                    padding: "4px",
+                    borderRadius: "5px",
+                }}
+            >
+                We only support Gmail, Outlook, Yahoo, Hotmail
+            </span>
+        );
+    }
+
     // Input Change Handler
     changeHandler(event) {
         this.setState({
@@ -24,11 +48,6 @@ class ContactUs extends Component {
 
     // Submit Form
     submitForm() {
-        var frm = document.getElementById("contact-form");
-        // console.log(JSON.stringify(this.state));
-        var f = new FormData(frm);
-        console.log(f);
-        // alert(f);
         fetch("http://127.0.0.1:8000/api/contact/", {
             method: "POST",
             body: JSON.stringify(this.state),
@@ -37,16 +56,17 @@ class ContactUs extends Component {
             },
         })
             .then((response) => response.json())
-            // .then((response) => {
-            //     if (response.status == "Created") {
-            //         alert("Message Sent.");
-            //         this.resetForm();
-            //     } else {
-            //         console.log(response.status);
-            //         alert("Message failed to send.");
-            //     }
-            // });
-            // .then((data) => console.log(data));
+            .then((res) => {
+                // setAlert("Message sent", "success");
+                // setLoading(false);
+                window.scrollTo(0, 0);
+            })
+            .catch((err) => {
+                // setAlert("Error sending message", "error");
+                // setLoading(false);
+                window.scrollTo(0, 0);
+            }).then(<Redirect push to="/contactus" />);
+
 
         this.setState({
             name: " ",
@@ -117,22 +137,30 @@ class ContactUs extends Component {
                                 <form id="contact-form">
                                     <p>
                                         <label>Name</label>
-                                        <input type="text" id="name" onChange={this.changeHandler} value={this.state.name}  name="name" />
+                                        <input type="text" id="name" onChange={this.changeHandler} value={this.state.name} name="name" />
                                     </p>
 
                                     <p>
                                         <label>E-mail Address</label>
-                                        <input type="email" id="email" onChange={this.changeHandler} value={this.state.email}   name="email"/>
+                                        <Tippy content={this.EmailTooltip()}>
+                                            <input type="email" id="email" onChange={this.changeHandler} value={this.state.email} name="email" />
+                                        </Tippy>
                                     </p>
-
                                     <p>
                                         <label>Mobile Number</label>
-                                        <input type="text" name="mobile" value={this.state.mobile} onChange={this.changeHandler} id="mobileNumber" />
+                                        <input
+                                            type="text"
+                                            name="mobile"
+                                            value={this.state.mobile}
+                                            onChange={this.changeHandler}
+                                            id="mobileNumber"
+                                            maxLength="10"
+                                        />
                                     </p>
 
                                     <p class="full">
                                         <label>Write your message here...</label>
-                                        <input
+                                        <textarea
                                             type="text"
                                             name="detail"
                                             value={this.state.detail}
@@ -144,7 +172,9 @@ class ContactUs extends Component {
                                     </p>
 
                                     <p class="full">
-                                        <input type="submit" onClick={this.submitForm} class="btn btn-primary" />
+                                        <Link to="/contactus">
+                                            <input type="submit" onClick={this.submitForm} class="btn btn-primary" />
+                                        </Link>
                                     </p>
                                 </form>
                             </div>

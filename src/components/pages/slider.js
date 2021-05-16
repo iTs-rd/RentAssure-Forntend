@@ -1,5 +1,8 @@
 import React from "react";
-import "../css/slider.css";
+
+
+// try to implement local css styling than import
+// import "../css/slider.css";
 
 function Slider() {
     return (
@@ -11,7 +14,6 @@ function Slider() {
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100  " src="https://source.unsplash.com/user/erondu" alt="First slide" />
                 </div>
                 <div class="carousel-item">
                     <img class="d-block w-100" src="https://source.unsplash.com/random" alt="Second slide" />

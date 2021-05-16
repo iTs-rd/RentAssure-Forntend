@@ -11,7 +11,7 @@ import Flat from "./components/pages/Flat";
 import Room from "./components/pages/Room";
 import ContactUs from "./components/pages/ContactUs";
 import AboutUs from "./components/pages/Aboutus";
-import Navbar from "./components/pages/Navbar";
+import Navbar from './components/pages/Navbar'
 import Login from "./components/pages/Login";
 import Profile from './components/pages/Profile'
 import SignUp from './components/pages/SignUp'
@@ -23,30 +23,31 @@ function App(){
 
     const ProductId =({match}) => {
 
-        const [product, setProduct]=useState(null);
+        const [properties, setProperty]=useState(null);
         useEffect(()=>{
             fetch(`${process.env.REACT_APP_API_URL}/api/data/${match.params.productId}`,{
                 method:'GET',
             }).then( resp => resp.json()).then(res=> {
-                setProduct(res);
+                console.log(res)
+                setProperty(res);
                 if(res.detail==="Not found.")
                     window.location.href="/"
             })
             .catch( err => console.log(err))
         },[])
-        if(product===null)
+        if(properties===null)
             return(<div/>);
-        if(product.property_type==='House')
+        if(properties.property_type==='House')
             return(
-                <House item={product}/>
+                <House item={properties}/>
             )
-        if(product.property_type==='Room')
+        if(properties.property_type==='Room')
             return(
-                <Room item={product}/>
+                <Room item={properties}/>
             )
-        if(product.property_type==='Flat')
+        if(properties.property_type==='Flat')
             return(
-                <Flat item={product}/>
+                <Flat item={properties}/>
             )
         return(<div/>)    
     };

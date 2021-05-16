@@ -11,7 +11,7 @@ class Login extends Component{
         };
         this.eventHandler = this.eventHandler.bind(this);
 
-        fetch(`${process.env.REACT_APP_API_URL}/api/user/`,{
+        fetch(`${process.env.REACT_APP_API_URL}/api/viewuser/`,{
             method:"GET",
             headers: {
                 "Content-type": "application/json",
@@ -19,7 +19,8 @@ class Login extends Component{
             },
         }).then(resp => resp.json()).then(res => {
             if(res.message==='ok')
-                window.location.href="/profile";                
+                window.location.href="/profile";
+           
         })
     }
 

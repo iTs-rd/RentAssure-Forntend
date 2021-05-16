@@ -1,6 +1,7 @@
 function House(props) {
     return (
         <div>
+            {console.log(props)}
             <h1>House component</h1>
             <h6>property_type<strong>{props.item.property_type}</strong></h6>
             <h6>title<strong>{props.item.title}</strong></h6>

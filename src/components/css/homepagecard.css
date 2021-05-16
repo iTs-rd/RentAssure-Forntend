@@ -1,0 +1,46 @@
+.homepagecard .carditem img{
+    width: 100%;
+    cursor:pointer;
+}
+
+.homepagecard .title{
+    cursor:pointer;
+}
+
+.homepagecard .carditem {
+    border: 1px solid rgba(0,0,0,.125);
+    margin-bottom: 1rem;
+    background-color: white;
+    box-shadow: rgb(0 106 194 / 20%) 0 1px 4px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.homepagecard .content {
+    margin-top: 0.5rem;
+    padding-left: 0;
+}
+
+.homepagecard .bold {
+    font-weight: 600;
+}
+
+.homepagecard .f-small {
+    font-size: 0.67rem;
+}
+
+.homepagecard .f-large {
+    font-size: 1rem;
+}
+
+.homepagecard .area{
+    align-items: baseline;
+}
+
+.homepagecard .far {
+    font-size: 1.2rem;
+}
+
+.homepagecard{
+    margin-inline: 2rem;
+}

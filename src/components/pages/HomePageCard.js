@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import '../css/HomePageCard.css'
+import '../css/homepagecard.css'
 
 function HomePageCard() {
     var start=0

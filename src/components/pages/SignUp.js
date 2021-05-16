@@ -73,7 +73,7 @@ class SignUp extends Component {
                         <label for="firstname">firstname</label>
                         <input type="text" name="firstname" onChange={this.changeHandler} value={this.state.firstname} class="form-control" id="firstname" placeholder="firstname" />
                     </div>
-                    <div class="form-group">
+                    {/* <div class="form-group">
                         <label for="lastname">lastname</label>
                         <input type="text" name="lastname" onChange={this.changeHandler} value={this.state.lastname} class="form-control" id="lastname" placeholder="lastname" />
                     </div>
@@ -99,7 +99,7 @@ class SignUp extends Component {
                             <label for="dp">Profile Photo</label>
                             <input type="file" name="dp" class="form-control-file" id="dp" onChange={this.eventHandler} />
                         </div>
-                    </div>
+                    </div> */}
                 </form>
                 <button class="btn btn-primary" onClick={this.signup}>Submit</button>
             </div>            
