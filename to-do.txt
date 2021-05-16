@@ -1,1 +1,3 @@
 automatically fill Distric and state name when pincode is filled
+
+signup using web portal

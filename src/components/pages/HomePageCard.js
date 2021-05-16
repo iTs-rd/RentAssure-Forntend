@@ -2,31 +2,60 @@ import { useEffect, useState } from "react";
 import '../css/HomePageCard.css'
 
 function HomePageCard() {
-    var start=1
-    var end=15
-    const [products, setProduct] = useState([]);
+    var start=0
+    var end=10
+    const [properties, setProperty] = useState([]);
     useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/datalist/`,{
+        fetch(`${process.env.REACT_APP_API_URL}/api/datalist/`,{
             method:'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'start':start,
                 'end':end,
             },
-        }).then( resp => resp.json()).then(res=> setProduct(res))
+        }).then( resp => resp.json()).then(res=> {
+            setProperty(res);
+            console.log(res)
+        })
         .catch( err => console.log(err))
     },[])
 
+    function ShowImage(item){
+        return(
+            <div class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner" >
+                    <div class="carousel-item active" data-interval="500">
+                        <img src={item[0]} class="d-block w-100" alt={item[0]} />
+                    </div>
+                    <div class="carousel-item " data-interval="500">
+                        <img src={item[1]} class="d-block w-100" alt={item[1]} />
+                    </div>
+                    <div class="carousel-item " data-interval="500">
+                        <img src={item[2]} class="d-block w-100" alt={item[2]} />
+                    </div>
+                    <div class="carousel-item " data-interval="500">
+                        <img src={item[3]} class="d-block w-100" alt={item[3]} />
+                    </div>
+                </div>
+            </div>
+        );
+    }
     
     function CreateCard(item) {
+        const PropertyDetails = () => {
+            window.location.href=`/home/${item.id}`
+        }
+
+        var img=[item.img1,item.img2,item.img3,item.img2];
+
         return(
             <div className="carditem row">
-                <div className="col-12 col-md-4" style={{padding:'0'}}>
-                    <img src= {item.img2} />
+                <div className="col-12 col-md-4" style={{padding:'0'}} onClick={PropertyDetails}>
+                    {ShowImage(img)}
                 </div>
                 <div className="col-12 col-md-8 row content">
                     <div className="col-12 d-flex justify-content-between">
-                        <div className="title bold">{item.title}</div>
+                        <div className="title bold" onClick={PropertyDetails}>{item.title}</div>
                         <div><i class="far fa-heart"></i></div>
                     </div>
                     <div className="col-6 col-md-4 rent f-small">
@@ -55,10 +84,7 @@ function HomePageCard() {
 
     return(
         <div className="homepagecard">
-
-            {/* {console.log(products)} */}
-            {/* {CreateCard(products)} */}
-            {products.map(product => CreateCard(product))}
+            {properties.map(property => CreateCard(property))}
         </div>
     );
 }

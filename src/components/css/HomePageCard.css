@@ -39,3 +39,17 @@
 .homepagecard{
     margin-inline: 2rem;
 }
+
+.homepagecard .title{
+  cursor: pointer;
+}
+
+.carousel {
+    height: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}
+.carousel-inner > .carousel-item > img {
+    height: auto;
+}
+

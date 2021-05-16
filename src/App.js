@@ -1,7 +1,10 @@
-import React from "react";
+import React,{ useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { CookiesProvider } from "react-cookie";
 import "./App.css";
-import Home from "./components/pages/Home";
+import Slider from "./components/pages/slider";
+import HomePageCard from "./components/pages/HomePageCard";
+import Filter from './components/pages/Filter'
 import Services from "./components/pages/Services";
 import House from "./components/pages/House";
 import Flat from "./components/pages/Flat";
@@ -9,24 +12,84 @@ import Room from "./components/pages/Room";
 import ContactUs from "./components/pages/ContactUs";
 import AboutUs from "./components/pages/Aboutus";
 import Navbar from "./components/pages/Navbar";
+import Login from "./components/pages/Login";
+import Profile from './components/pages/Profile'
+import SignUp from './components/pages/SignUp'
+import ShowUserProperty from "./components/pages/ShowUserProperty";
+import EditUserProperty from "./components/pages/EditUserProperty";
+import AddProperty from "./components/pages/AddProperty";
 
-function App() {
+function App(){
+
+    const ProductId =({match}) => {
+
+        const [product, setProduct]=useState(null);
+        useEffect(()=>{
+            fetch(`${process.env.REACT_APP_API_URL}/api/data/${match.params.productId}`,{
+                method:'GET',
+            }).then( resp => resp.json()).then(res=> {
+                setProduct(res);
+                if(res.detail==="Not found.")
+                    window.location.href="/"
+            })
+            .catch( err => console.log(err))
+        },[])
+        if(product===null)
+            return(<div/>);
+        if(product.property_type==='House')
+            return(
+                <House item={product}/>
+            )
+        if(product.property_type==='Room')
+            return(
+                <Room item={product}/>
+            )
+        if(product.property_type==='Flat')
+            return(
+                <Flat item={product}/>
+            )
+        return(<div/>)    
+    };
+
+    function Home() {
+        return (
+            <div style={{marginInline:'3rem'}}>
+                {/* <Slider /> */}
+                <div className="row">
+                    <div className="col-3 d-none d-md-block">
+                        <Filter/>
+                    </div>
+                    <div className="col-12 col-md-9 ">
+                        <HomePageCard/>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <React.Fragment>
-            <Router>
-                <Navbar />
-                {/* This will help in switching through pages and components are provided in components/pages */}
-                <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/services" component={Services} />
-                    <Route path="/house" component={House} />
-                    <Route path="/flat" component={Flat} />
-                    <Route path="/room" component={Room} />
-                    <Route path="/contactus" component={ContactUs} />
-                    <Route path="/aboutus" component={AboutUs} />
-                    <Redirect to="/" />
-                </Switch>
-            </Router>
+            <CookiesProvider>
+                <Router>
+
+                    <Navbar />
+                    {/* This will help in switching through pages and components are provided in components/pages */}
+                    <Switch>
+                        <Route path="/" exact component={Home} />
+                        <Route path="/home/:productId" exact component={ProductId} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/signup" component={SignUp} />
+                        <Route path="/profile" exact component={Profile} />
+                        <Route path="/profile/properties" exact component={()=><ShowUserProperty />} />
+                        <Route path="/profile/properties/:productId" exact component={(x)=><EditUserProperty id={x.match.params.productId} />} />
+                        <Route path="/services" component={Services} />
+                        <Route path="/contactus" component={ContactUs} />
+                        <Route path="/aboutus" component={AboutUs} />
+                        <Route path="/add" component={AddProperty} />
+                        <Redirect to="/" />
+                    </Switch>
+                </Router>
+            </CookiesProvider>
         </React.Fragment>
     );
 }
