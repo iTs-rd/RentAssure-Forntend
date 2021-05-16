@@ -2,7 +2,6 @@ import React,{ useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { CookiesProvider } from "react-cookie";
 import "./App.css";
-import Slider from "./components/pages/slider";
 import HomePageCard from "./components/pages/HomePageCard";
 import Filter from './components/pages/Filter'
 import Services from "./components/pages/Services";

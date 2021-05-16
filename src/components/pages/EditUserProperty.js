@@ -1,4 +1,4 @@
-import { Component, useEffect, useState } from "react";
+import { Component } from "react";
 import { withCookies } from "react-cookie";
 
 class EditUserProperty extends Component{

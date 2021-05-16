@@ -55,7 +55,7 @@
     margin-left: 40px;
     text-decoration:underline;
   }
-  .container {
+  .containe {
     position: relative;
     height: 300px;
     width: 300px;
@@ -65,7 +65,7 @@
     margin-top: 10px;
   }
   
-  .container:hover {
+  .containe:hover {
     box-shadow: 1px 2px 10px rgba(0,0,0,0.5);
   }
   
@@ -84,7 +84,7 @@
     cursor: pointer;
   }
   
-  .container:hover .img-container {
+  .containe:hover .img-container {
     transform: translateY(-80px);
   }
   
@@ -94,7 +94,7 @@
     transition: opacity 0.3s ease-out;
   }
   
-  .container:hover > .img-container > img {
+  .containe:hover > .img-container > img {
     opacity: 0.5;
   }
   
@@ -127,7 +127,7 @@
     transition: all 0.3s ease-out;
   }
   
-  .container:hover > .social-media > li > a {
+  .containe:hover > .social-media > li > a {
     transform: translateY(0);
     opacity: 1;
   }
@@ -142,23 +142,23 @@
     transform: rotateY(360deg);
   }
   
-  .container:hover .social-media li:nth-child(1) a {
+  .containe:hover .social-media li:nth-child(1) a {
     transition-delay: 0s;
   }
   
-  .container:hover .social-media li:nth-child(2) a {
+  .containe:hover .social-media li:nth-child(2) a {
     transition-delay: 0.1s;
   }
   
-  .container:hover .social-media li:nth-child(3) a {
+  .containe:hover .social-media li:nth-child(3) a {
     transition-delay: 0.2s;
   }
   
-  .container:hover .social-media li:nth-child(4) a {
+  .containe:hover .social-media li:nth-child(4) a {
     transition-delay: 0.3s;
   }
   
-  .container:hover .social-media li:nth-child(5) a {
+  .containe:hover .social-media li:nth-child(5) a {
     transition-delay: 0.4s;
   }
   

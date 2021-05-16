@@ -1,4 +1,3 @@
-import { waitForElement } from '@testing-library/dom';
 import { Component } from 'react';
 import { withCookies } from "react-cookie";
 
@@ -30,11 +29,7 @@ class SignUp extends Component {
     }
 
     signup=()=>{
-        // var frm=document.getElementById("signup");
-        // var formdata=new FormData(frm);
-        // formdata.append('dpf','sfvfsv');
-        // console.log(formdata)
-        // formdata.append('dp',this.state.dp)
+
         fetch(`${process.env.REACT_APP_API_URL}/api/adduser/`, {
             method: "POST",
             body:  JSON.stringify(this.state),

@@ -1,4 +1,4 @@
-import { useCookies } from "react-cookie";
+// import { useCookies } from "react-cookie";
 import logo from "../assets/images/logo.png";
 import "../css/navbar.css";
 
@@ -12,7 +12,7 @@ function Navbar() {
                     <a className="nav-link active" href="/"><i className="fas fa-home"></i>Home</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="{#}"><i className="fas fa-info"></i>About</a>
+                    <a className="nav-link" href="/aboutus"><i className="fas fa-info"></i>About</a>
                 </li>
                 <li className="nav-item">
                     <a className="nav-link" href="/"><i className="fas fa-shopping-cart"></i>Rent</a>

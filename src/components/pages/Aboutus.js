@@ -11,7 +11,7 @@ function AboutUs() {
       <div className="row">
 
         <div className="col-12 col-md-6">
-          <img src={happy} alt="image" width="100%" height="600px"></img>
+          <img src={happy} alt="imag" width="100%" height="600px" />
         </div>
         <div className="col-12 col-md-6 "style={{backgroundColor:"white"}}>
           <div className="text">
@@ -63,8 +63,8 @@ function AboutUs() {
   </div>
   <ul className="social-media">
 			<li><a href="https://www.facebook.com/smart.abhi.148553"><i class="fab fa-facebook-f"></i></a></li>
-			<li><a href="#"><i className="fab fa-linkedin-in"></i></a></li>
-			<li><a href="#"><i className="fab fa-instagram"></i></a></li>
+			<li><a href="{#}"><i className="fab fa-linkedin-in"></i></a></li>
+			<li><a href="https://www.instagram.com/_abhi_c_/"><i className="fab fa-instagram"></i></a></li>
 		</ul>
 		<div class="user-info">
 			<h2>Abhishek Chaurasia</h2>

@@ -56,10 +56,10 @@ function ShowUserProperty(props){
         return(
             <div className="col-6 carditem row">
                 <div className="col-12 row" style={{padding:'0'}} onClick={PropertyDetail}>
-                    <img className="col-6 " src={item.img1} alt="photo" />
-                    <img className="col-6 " src={item.img2} alt="photo" />
-                    <img className="col-6 " src={item.img3} alt="photo" />
-                    <img className="col-6 " src={item.img4} alt="photo" />
+                    <img className="col-6 " src={item.img1} alt="photo1" />
+                    <img className="col-6 " src={item.img2} alt="photo2" />
+                    <img className="col-6 " src={item.img3} alt="photo3" />
+                    <img className="col-6 " src={item.img4} alt="photo4" />
                 </div>
                 <div className="col-12 row content">
                     <div className="col-12 d-flex justify-content-between">

@@ -104,27 +104,27 @@ class ContactUs extends Component {
                                 <ul class="sci">
                                     <br />
                                     <li>
-                                        <a href="#" alt="Facebook">
+                                        <a href="{#}" alt="Facebook">
                                             <ion-icon name="logo-facebook" size="large"></ion-icon>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" alt="Twitter">
+                                        <a href="{#}" alt="Twitter">
                                             <ion-icon name="logo-twitter" size="large"></ion-icon>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" alt="Instagram">
+                                        <a href="{#}" alt="Instagram">
                                             <ion-icon name="logo-instagram" size="large"></ion-icon>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" alt="Linkedin">
+                                        <a href="{#}" alt="Linkedin">
                                             <ion-icon name="logo-linkedin" size="large"></ion-icon>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" alt="Quora">
+                                        <a href="{#}" alt="Quora">
                                             <ion-icon name="people-outline" size="large"></ion-icon>
                                         </a>
                                     </li>
