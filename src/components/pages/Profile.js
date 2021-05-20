@@ -1,78 +1,158 @@
-import { useEffect, useState } from 'react';
-import { useCookies } from 'react-cookie';
-import EditProfile from './EditProfile'
+import React, { useEffect, useState } from "react";
+import "../css/profile.css";
+import { useCookies } from "react-cookie";
+import { Row, Col, Card, Button, ListGroup, Toast } from "react-bootstrap";
+import EditProfile from "./EditProfile";
+// import Show from "./contactOwner";
 
-function Profile(){
-    const [token, setToken] = useCookies(['auth']);
+function Profile() {
+    const [token, setToken] = useCookies(["auth"]);
     const [user, setUser] = useState(null);
-    const [mode,SetMode]=useState(0);
+    const [mode, SetMode] = useState(0);
+    const [show, setShow] = useState(false);
 
-    useEffect( () => {
-        if(!token['auth']) window.location.href = '/login';
-    },[])
+    useEffect(() => {
+        if (!token["auth"]) window.location.href = "/login";
+    }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/api/viewuser/`, {
-            method: 'GET',
+            method: "GET",
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Token ${token['auth']}`,
+                "Content-Type": "application/json",
+                "Authorization": `Token ${token["auth"]}`,
             },
-        }).then( resp => resp.json()).then(res => {
-            if(res.message==='ok')
-            {
-                console.log(res)
-                setUser(res.result)
-                SetMode(1)
-            }
-            else
-                window.location.href = '/login'
-        }).catch( error => console.log(error)) 
-    },[])
+        })
+            .then((resp) => resp.json())
+            .then((res) => {
+                if (res.message === "ok") {
+                    console.log(res);
+                    setUser(res.result);
+                    SetMode(1);
+                } else window.location.href = "/login";
+            })
+            .catch((error) => console.log(error));
+    }, []);
 
-    function ChangeMode(){
+    function ChangeMode() {
         SetMode(!mode);
     }
     const logout = () => {
-        document.cookie="auth="+token['auth']+";max-age=0";
+        document.cookie = "auth=" + token["auth"] + ";max-age=0";
         window.location.reload();
-    }
+    };
 
-    
-    const ShowProfile=()=>{
-        if(user!=null)
-            return(
-                <div className="">
-                    <button onClick={logout} type="button" class="btn btn-danger">logout</button>
-                    <br/><br/>
-                    <button onClick={() => window.location.href="/profile/properties"} type="button" class="btn btn-primary">List property</button>
-                    <br/><br/>
-                    <button onClick={ChangeMode} type="button" class="btn btn-info">Edit</button>
+    const ShowProfile = () => {
+        if (user != null)
+            return (
+                <React.Fragment>
+                    <Row>
+                        <Col md={{ offset: 2 }} >
+                            <h1>USER PROFILE</h1>
+                        </Col>
+                        <Col md={{ offset: 2 }}>
+                            {/* work on User Profile */}
+                            <Button
+                                variant="danger"
+                                className="mx-4 block-example border border-0 border-dark rounded-top rounded-right"
+                                onClick={logout}
+                            >
+                                Log Out <i class="fas fa-sign-out-alt"></i>
+                            </Button>
+                            <Button
+                                variant="info"
+                                className="block-example border border-0 border-dark rounded-top rounded-right"
+                                onClick={() => (window.location.href = "/profile/properties")}
+                            >
+                                List property <i class="fas fa-list"></i>
+                            </Button>
+                        </Col>
+                    </Row>
                     <br />
-                    
-                    <h1>ShowProfile</h1>
-                    <h6>first name- {user.firstname}</h6>
-                    <h6>last name- {user.lastname}</h6>
-                    <h6>handle- {user.username}</h6>
-                    <h6>mobile no- {user.mobile}</h6>
-                    <h6>email id- {user.email}</h6>
-                    <h6>age - {user.age}</h6>
-                    <h6>gender - {user.gender}</h6>
-                    <img src={user.dp} alt="dp" />
-                </div>
+                    <Row>
+                        <Col md={{ span: 4, offset: 1 }}>
+                            <Card>
+                                <Card.Img variant="top" src={user.dp}></Card.Img>
+                                <Button variant="dark" onClick={ChangeMode}>
+                                    Edit Profile
+                                </Button>
+                            </Card>
+                        </Col>
+                        <Col md={{ span: 5, offset: 1 }} className="my-3">
+                            <Row>
+                                <Col md={{ span: 5 }} className="my-2" id="firstList">
+                                    <ListGroup variant="flush" className="mx-2">
+                                        <ListGroup.Item className="my-3 border-left border-dark  rounded-top rounded-right">
+                                            First Name
+                                        </ListGroup.Item>
+                                        <ListGroup.Item className="my-3 border-left border-dark rounded-top rounded-right">Last Name</ListGroup.Item>
+                                        <ListGroup.Item className="my-3 border-left border-dark rounded-top rounded-right">Handle</ListGroup.Item>
+                                        <ListGroup.Item className="my-3 border-left border-dark rounded-top rounded-right">Age</ListGroup.Item>
+                                        <ListGroup.Item className="my-3 border-left border-bottom border-dark rounded-top rounded-right">
+                                            Gender
+                                        </ListGroup.Item>
+                                    </ListGroup>
+                                </Col>
+                                <Col md={{ span: 7 }} className="my-2 ">
+                                    <ListGroup variant="flush" className="mx-2">
+                                        <ListGroup.Item className="my-3 border-dark  border-right rounded-top rounded-right">
+                                            {user.firstname}
+                                        </ListGroup.Item>
+                                        <ListGroup.Item className="my-3 border-dark  border-right rounded-top rounded-right">
+                                            {user.lastname}
+                                        </ListGroup.Item>
+                                        <ListGroup.Item className="my-3 border-dark  border-right rounded-top rounded-right">
+                                            {user.username}
+                                        </ListGroup.Item>
+                                        <ListGroup.Item className="my-3 border-dark  border-right rounded-top rounded-right">
+                                            {user.age}
+                                        </ListGroup.Item>
+                                        <ListGroup.Item className="my-3  border-dark  border-bottom border-right rounded-top rounded-right">
+                                            {user.gender}
+                                        </ListGroup.Item>
+                                    </ListGroup>
+                                </Col>
+                                <div>
+                                    <Row>
+                                        <Col sm={6}>
+                                            <Toast onClose={() => setShow(false)} show={show} delay={8000} autohide>
+                                                <Toast.Header>
+                                                    <i class="fas fa-id-card-alt"></i>
+                                                    <strong className="mr-auto">Owner/Agent</strong>
+                                                </Toast.Header>
+                                                <Toast.Body>
+                                                    <ListGroup.Item>
+                                                        <i class="fas fa-at"></i>
+                                                    </ListGroup.Item>
+                                                    <strong>{user.email}</strong>
+                                                    <ListGroup.Item className="my-1">
+                                                        <i class="fas fa-mobile-alt"></i>
+                                                    </ListGroup.Item>
+                                                    {user.mobile}
+                                                </Toast.Body>
+                                            </Toast>
+                                        </Col>
+                                        <Col>
+                                            <Button
+                                                variant="success"
+                                                className="  block-example border border-0 border-dark rounded-top rounded-right"
+                                                onClick={() => setShow(true)}
+                                            >
+                                                Contact Owner / Agent
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                </div>
+                            </Row>
+                        </Col>
+                    </Row>
+                </React.Fragment>
             );
-        else
-            return(<div></div>);
-    }
+        else return <div></div>;
+    };
 
-
-    return(
-        <div>
-            {mode?ShowProfile():<EditProfile  user={user} ChangeMode={ChangeMode} />}
-        </div>
-    );
-    
+    return <div>{mode ? ShowProfile() : <EditProfile user={user} ChangeMode={ChangeMode} />}</div>;
 }
 
-export default Profile
+export default Profile;
 // {mode?<ShowProfile id={userid} ChangeMode={ChangeMode}/>:<EditProfile id={userid} ChangeMode={ChangeMode} />}

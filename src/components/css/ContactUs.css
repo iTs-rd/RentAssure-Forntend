@@ -7,7 +7,7 @@ section {
     position: relative;
     justify-content: center;
     align-items: center;
-    top: 80px;
+    top: -15px;
     font-family: "Work Sans", sans-serif;
     background: #5433ff; /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #a5fecb, #20bdff, #5433ff); /* Chrome 10-25, Safari 5.1-6 */
@@ -164,7 +164,6 @@ section .container .wrapper .contact-info .sci li:hover a ion-icon {
 .contact form label:hover {
     opacity: 1;
 }
-
 
 .contact form p {
     margin: 0;
