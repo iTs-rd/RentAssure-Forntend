@@ -47,7 +47,7 @@ function Profile() {
             return (
                 <React.Fragment>
                     <Row>
-                        <Col md={{ offset: 2 }} >
+                        <Col md={{ offset: 2 }}>
                             <h1>USER PROFILE</h1>
                         </Col>
                         <Col md={{ offset: 2 }}>
@@ -95,19 +95,11 @@ function Profile() {
                                 </Col>
                                 <Col md={{ span: 7 }} className="my-2 ">
                                     <ListGroup variant="flush" className="mx-2">
-                                        <ListGroup.Item className="my-3 border-dark  border-right rounded-top rounded-right">
-                                            {user.firstname}
-                                        </ListGroup.Item>
-                                        <ListGroup.Item className="my-3 border-dark  border-right rounded-top rounded-right">
-                                            {user.lastname}
-                                        </ListGroup.Item>
-                                        <ListGroup.Item className="my-3 border-dark  border-right rounded-top rounded-right">
-                                            {user.username}
-                                        </ListGroup.Item>
-                                        <ListGroup.Item className="my-3 border-dark  border-right rounded-top rounded-right">
-                                            {user.age}
-                                        </ListGroup.Item>
-                                        <ListGroup.Item className="my-3  border-dark  border-bottom border-right rounded-top rounded-right">
+                                        <ListGroup.Item className="my-3 border-right rounded-top rounded-right Info">{user.firstname}</ListGroup.Item>
+                                        <ListGroup.Item className="my-3 border-right rounded-top rounded-right Info">{user.lastname}</ListGroup.Item>
+                                        <ListGroup.Item className="my-3 border-right rounded-top rounded-right Info">{user.username}</ListGroup.Item>
+                                        <ListGroup.Item className="my-3 border-right rounded-top rounded-right Info">{user.age}</ListGroup.Item>
+                                        <ListGroup.Item className="my-3 border-bottom border-right rounded-top rounded-right Info">
                                             {user.gender}
                                         </ListGroup.Item>
                                     </ListGroup>
