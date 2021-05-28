@@ -1,12 +1,14 @@
+#rudresh
 automatically fill Distric and state name when pincode is filled
+medical field in backend -- what it mean?? 
+check DataModel input data formate (uppecase lowercase etc)
 
-signup using web portal
 
 #abhishek
 #to add more icons
 #add css to list property
 #fix contactus page
-#photo wala in add property
+#photo wala in add property     😂😂😂
 #Css in Show user property
 #css in edit user property
 #css in list property

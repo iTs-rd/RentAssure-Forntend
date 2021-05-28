@@ -101,6 +101,7 @@ class AddProperty extends Component {
     submit = () => {
         var frm = document.getElementById("property-form");
         var formdata = new FormData(frm);
+        formdata.append('state','up')
         formdata.append("user", this.state.user);
         fetch(`${process.env.REACT_APP_API_URL}/api/data/   `, {
             method: "POST",
@@ -126,7 +127,7 @@ class AddProperty extends Component {
         return (
             <Row>
                 <h1>Add Property</h1>
-                <Form>
+                <Form id="property-form">
                     <Form.Row className="align-items-center">
                         <Col xs="auto">
                             <h5 className="mx-1 my-1">Property Type</h5>
@@ -192,14 +193,13 @@ class AddProperty extends Component {
                             <Form.Control name="city" onChange={this.eventHandler} value={this.state.city} id="city" placeholder="City" required />
                         </Form.Group>
 
-                        <Form.Group as={Col} controlId="state">
+                        {/* <Form.Group as={Col} controlId="state">
                             <Form.Label>5 . State</Form.Label>
-                            {/* To add the states here and link with backend */}
                             <Form.Control as="select" onChange={this.eventHandler} value={this.state.state} id="state" defaultValue="Choose...">
                                 <option>Choose...</option>
-                                <option>...</option>
+                                <option value='up' >up</option>
                             </Form.Control>
-                        </Form.Group>
+                        </Form.Group> */}
 
                         <Form.Group as={Col} controlId="pin">
                             <Form.Label>6 . Pin Code</Form.Label>

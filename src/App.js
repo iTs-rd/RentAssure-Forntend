@@ -10,7 +10,7 @@ import Flat from "./components/pages/Flat";
 import Room from "./components/pages/Room";
 import ContactUs from "./components/pages/ContactUs";
 import AboutUs from "./components/pages/Aboutus";
-import Navbar from "./components/pages/navbar";
+import Navbar from "./components/pages/Navbar";
 import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import SignUp from "./components/pages/SignUp";
@@ -41,15 +41,33 @@ function App() {
     };
 
     function Home() {
+        const [filterValues, setfilterValues]=useState({
+            'pin':"",
+            "rent__gte":"",
+            "rent__lte":"",
+            "bhk":[],
+            "property_type":[],
+            "furnishing":[],
+            "area__gte":"",
+            "area__lte":"",
+            "available_for":[],
+            "parking":"",
+            "lift":"",
+            "CCTV":"",
+            "gym":"",
+            "gas_pipeline":"",
+            "fire_alarme":"",
+        });
+
         return (
             <div style={{ marginInline: "3rem" }}>
                 {/* <Slider /> */}
                 <div className="row">
                     <div className="col-3 d-none d-md-block">
-                        <Filter />
+                        <Filter setfilterValues={setfilterValues} />
                     </div>
                     <div className="col-12 col-md-9 ">
-                        <HomePageCard />
+                        <HomePageCard filterValues={filterValues}/>
                     </div>
                 </div>
             </div>

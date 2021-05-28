@@ -1,16 +1,101 @@
 import "../css/filter.css";
 
-function Filter() {
+function Filter(props) {
     var bhk=['1RK/1BHK','2BHK','3BHK','4BHK','5+BHK'];
-    var property_type=['Studio Apartment','Service Apartment','Residential House','Villa'];
+    var property_type=['House','Room','Flat'];
     var furnishing=['Unfurnished','SemiFurnished','Furnishing'];
     var available_for=['Bachelor','Student','Couple','Family','Boys','Girls','GovernmentEmployee','Any'];
-    var posted_by=['Owner','Agent']
+    var other=['Parking','Lift','CCTV','gym','gas_pipeline','fire_alarme']
+
+    function applyFilter(){
+        var filterValue={
+            'pin':"",
+            "rent__gte":"",
+            "rent__lte":"",
+            "bhk":[],
+            "property_type":[],
+            "furnishing":[],
+            "area__gte":"",
+            "area__lte":"",
+            "available_for":[],
+            "parking":"",
+            "lift":"",
+            "CCTV":"",
+            "gym":"",
+            "gas_pipeline":"",
+            "fire_alarme":"",
+        }
+        
+        filterValue.pin=document.getElementById("pincode").value
+
+        filterValue.rent__gte=document.getElementById("minimumPrice").value
+        filterValue.rent__lte=document.getElementById("maximumPrice").value
+        
+        if(document.getElementById("1RK/1BHK").checked)
+            filterValue.bhk.push("1RK/1BHK")
+        if(document.getElementById("2BHK").checked)
+            filterValue.bhk.push("2BHK")
+        if(document.getElementById("3BHK").checked)
+            filterValue.bhk.push("3BHK")
+        if(document.getElementById("4BHK").checked)
+            filterValue.bhk.push("4BHK")
+        if(document.getElementById("5+BHK").checked)
+            filterValue.bhk.push("5+BHK")
+
+        if(document.getElementById("House").checked)
+            filterValue.property_type.push("House")
+        if(document.getElementById("Room").checked)
+            filterValue.property_type.push("Room")
+        if(document.getElementById("Flat").checked)
+            filterValue.property_type.push("Flat")
+        
+        if(document.getElementById("Furnishing").checked)
+            filterValue.furnishing.push("Furnishing")
+        if(document.getElementById("SemiFurnished").checked)
+            filterValue.furnishing.push("SemiFurnished")
+        if(document.getElementById("Unfurnished").checked)
+            filterValue.furnishing.push("Unfurnished")
+        
+        filterValue.area__gte=document.getElementById("minimumArea").value
+        filterValue.area__lte=document.getElementById("maximumArea").value
+
+        if(document.getElementById("Bachelor").checked)
+            filterValue.available_for.push("Bachelor")
+        if(document.getElementById("Student").checked)
+            filterValue.available_for.push("Student")
+        if(document.getElementById("Couple").checked)
+            filterValue.available_for.push("Couple")
+        if(document.getElementById("Family").checked)
+            filterValue.available_for.push("Family")
+        if(document.getElementById("Boys").checked)
+            filterValue.available_for.push("Boys")
+        if(document.getElementById("Girls").checked)
+            filterValue.available_for.push("Girls")
+        if(document.getElementById("GovernmentEmployee").checked)
+            filterValue.available_for.push("GovernmentEmployee")
+        if(document.getElementById("Any").checked)
+            filterValue.available_for.push("Any")
+
+        if(document.getElementById("Parking").checked)
+            filterValue.Parking="True"
+        if(document.getElementById("Lift").checked)
+            filterValue.Lift="True"
+        if(document.getElementById("CCTV").checked)
+            filterValue.CCTV="True"
+        if(document.getElementById("gym").checked)
+            filterValue.gym="True"
+        if(document.getElementById("gas_pipeline").checked)
+            filterValue.gas_pipeline="True"
+        if(document.getElementById("fire_alarme").checked)
+            filterValue.fire_alarme="True"
+
+        props.setfilterValues(filterValue);
+    }
 
     function FilterField(item){
         return(
             <div className="form-check">
-            <input type="checkbox" className="form-check-input" id={item} />
+            <input type="checkbox" onChange={() => applyFilter()} className="form-check-input" id={item} />
             <label className="form-check-label" for={item}>
                 {item}
             </label>
@@ -52,8 +137,43 @@ function Filter() {
 
     }
 
+    function callapplyFilter(event){
+        if(event.charCode===13)
+            applyFilter()
+    }
+
     return(
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingEight">
+                    <h4 class="panel-title">
+                        <a
+                            class="collapsed"
+                            role="button"
+                            data-toggle="collapse"
+                            data-parent="#accordion"
+                            href="#collapseEight"
+                            aria-expanded="false"
+                            aria-controls="collapseEight"
+                        >
+                            Pincode
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseEight" class="panel-collapse collapse in " role="tabpanel" aria-labelledby="headingEight">
+                    <div class="panel-body">
+                        <form class="row">
+                            <div class="col-12 form-group">
+                                <input type="pincode" onKeyPress={callapplyFilter} class="form-control" id="pincode" placeholder="Pincode" />
+                            </div>
+                            <div class="d-none form-group">
+                                {/* this is because when enter is pressed page reload and this will prevent it */}
+                                <input type="maximumPin" class="form-control" id="maximumPin" placeholder="Max." />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
@@ -67,7 +187,7 @@ function Filter() {
                             aria-expanded="false"
                             aria-controls="collapseOne"
                         >
-                            Budget
+                            Rent
                         </a>
                     </h4>
                 </div>
@@ -75,20 +195,19 @@ function Filter() {
                     <div class=" panel-body">
                         <form class="row">
                             <div class="col-md-6 form-group">
-                                <input type="minimumPrice" class="form-control" id="minimumPrice" placeholder="Min." />
+                                <input type="minimumPrice" onKeyPress={callapplyFilter} class="form-control" id="minimumPrice" placeholder="Min." />
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="maximumPrice" class="form-control" id="maximumPrice" placeholder="Max." />
+                                <input type="maximumPrice" onKeyPress={callapplyFilter} class="form-control" id="maximumPrice" placeholder="Max." />
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
 
-            {Panel("BHK",bhk,"headingTwo","collapseTwo")}
             {Panel("Property Type",property_type,"headingThree","collapseThree")}
+            {Panel("BHK",bhk,"headingTwo","collapseTwo")}
             {Panel("Furnishing",furnishing,"headingFour","collapseFour")}
-
 
             <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingFive">
@@ -110,10 +229,10 @@ function Filter() {
                     <div class=" panel-body">
                         <form class="row">
                             <div class="col-md-6 form-group">
-                                <input type="minimumArea" class="form-control" id="minimumArea" placeholder="Min." />
+                                <input type="minimumArea" onKeyPress={callapplyFilter} class="form-control" id="minimumArea" placeholder="Min." />
                             </div>
                             <div class="col-md-6 form-group">
-                                <input type="maximumArea" class="form-control" id="maximumArea" placeholder="Max." />
+                                <input type="maximumArea" onKeyPress={callapplyFilter} class="form-control" id="maximumArea" placeholder="Max." />
                             </div>
                         </form>
                     </div>
@@ -121,8 +240,8 @@ function Filter() {
             </div>
 
             {Panel("Available For",available_for,"headingSix","collapseSix")}
-            {Panel("Posted By",posted_by,"headingSeven","collapseSeven")}
-
+            {Panel("Other",other,"headingSeven","collapseSeven")}
+            {/* headingEight,collapseEight is taken (at the top) */}
         </div>
 
     );
