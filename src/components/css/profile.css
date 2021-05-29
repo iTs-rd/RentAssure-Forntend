@@ -1,3 +1,9 @@
 #firstList {
     font-weight: 900;
 }
+
+.Info {
+    border-color: black !important;
+    border-right-width: 0px !important ;
+    pointer-events: none;
+}

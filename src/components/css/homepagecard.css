@@ -1,10 +1,5 @@
 .homepagecard .carditem img{
     width: 100%;
-    cursor:pointer;
-}
-
-.homepagecard .title{
-    cursor:pointer;
 }
 
 .homepagecard .carditem {
@@ -15,6 +10,7 @@
     padding: 10px;
     border-radius: 10px;
 }
+
 .homepagecard .content {
     margin-top: 0.5rem;
     padding-left: 0;
@@ -43,3 +39,17 @@
 .homepagecard{
     margin-inline: 2rem;
 }
+
+.homepagecard .title{
+  cursor: pointer;
+}
+
+.carousel {
+    height: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}
+.carousel-inner > .carousel-item > img {
+    height: auto;
+}
+
