@@ -97,12 +97,12 @@ class EditProfile extends Component {
 					</Row>
 					<Row className="my-4 ">
 						<Col md={2}></Col>
-						<Col md={5}>
+						<Col md={5} className="border border-dark rounded">
 							<Form id="profile-form">
-								<Row className="text-center my-2 border border-dark border-bottom">
+								<Row className="text-center my-2 ">
 									<h1 className=" my-2 ">EDIT PROFILE</h1>
 								</Row>
-								<Row className="my-2 border border-dark ">
+								<Row className="my-2  ">
 									<Row>
 										<Col>
 											<Form.Group controlId="firstname">
@@ -114,7 +114,7 @@ class EditProfile extends Component {
 													value={this.state.firstname}
 													id="firstname"
 													placeholder="First Name"
-													className="text-capitalize block-example border border-top-0 border-dark"
+													className="text-capitalize block-example border border-top-0 border-dark rounded"
 													required
 												/>
 											</Form.Group>
@@ -129,7 +129,7 @@ class EditProfile extends Component {
 													value={this.state.lastname}
 													id="lastname"
 													placeholder="Last Name"
-													className="text-capitalize block-example border border-top-0 border-dark"
+													className="text-capitalize block-example border border-top-0 border-dark rounded"
 													required
 												/>
 											</Form.Group>
@@ -147,7 +147,7 @@ class EditProfile extends Component {
 													value={this.state.username}
 													id="username"
 													placeholder="User Name"
-													className="block-example border border-top-0 border-dark"
+													className="block-example border border-top-0 border-dark rounded"
 													required
 												/>
 											</Form.Group>
@@ -162,7 +162,7 @@ class EditProfile extends Component {
 													value={this.state.age}
 													id="age"
 													placeholder="Age"
-													className="text-capitalize block-example border border-top-0 border-dark"
+													className="text-capitalize block-example border border-top-0 border-dark rounded"
 													required
 												/>
 											</Form.Group>
@@ -171,8 +171,9 @@ class EditProfile extends Component {
 											<Form.Group>
 												<Form.Label>5 . Gender </Form.Label>
 												<select name="gender" id="gender" onChange={this.eventHandler} value={this.state.gender}>
-													<option>Male</option>
-													<option>Female</option>
+													<option value="Male">Male</option>
+													<option value="Female">Female</option>
+													<option value="Other">Other</option>
 												</select>
 											</Form.Group>
 										</Col>
@@ -190,7 +191,7 @@ class EditProfile extends Component {
 													class="form-control"
 													id="mobile"
 													placeholder="Mobile"
-													className="block-example border border-top-0 border-dark"
+													className="block-example border border-top-0 border-dark rounded"
 													required
 												/>
 											</Form.Group>
@@ -205,14 +206,14 @@ class EditProfile extends Component {
 													value={this.state.email}
 													id="email"
 													placeholder="Email"
-													className=" block-example border border-top-0 border-dark"
+													className=" block-example border border-top-0 border-dark rounded"
 													required
 												/>
 											</Form.Group>
 										</Col>
 									</Row>
 								</Row>
-								<Row className="text-center my-2 border border-dark">
+								<Row className="text-center my-2 border border-dark rounded">
 									<div class="form-group">
 										<img src={this.state.dp} alt="dp" />
 										<div class="form-group">
