@@ -1,90 +1,83 @@
 import { useEffect, useState } from "react";
 import MyCard from "./MyCard";
-import "../css/homepagecard.css";
+import "../css/HomePageCard.css";
 
 function HomePageCard(props) {
-    var start=0
-    var end=10
-    const [properties, setProperty] = useState([]);
-    useEffect(() => {
-        var y=props.filterValues
-        console.log(props.filterValues)
-        window.x=props.filterValues
-        var filter='?rent__lte='+y.rent__lte+'&rent__gte='+y.rent__gte+'&pin='+y.pin+'&area__lte='+y.area__lte+'&area__gte='+y.area__gte
-        
-        var temp=""
-        if(y.bhk.length)
-            temp="&bhk="+y.bhk[0]
-        for(var i=1;i<y.bhk.length;i++)
-            temp+=','+y.bhk[i]
-        filter+=temp
+	var start = 0;
+	var end = 10;
+	const [properties, setProperty] = useState([]);
+	useEffect(() => {
+		var y = props.filterValues;
+		console.log(props.filterValues);
+		window.x = props.filterValues;
+		var filter =
+			"?rent__lte=" + y.rent__lte + "&rent__gte=" + y.rent__gte + "&pin=" + y.pin + "&area__lte=" + y.area__lte + "&area__gte=" + y.area__gte;
 
-        temp=""
-        if(y.property_type.length)
-            temp="&property_type="+y.property_type[0]
-        for(i=1;i<y.property_type.length;i++)
-            temp+=','+y.property_type[i]
-        filter+=temp
-        
-        temp=""
-        if(y.furnishing.length)
-            temp="&furnishing="+y.furnishing[0]
-        for(i=1;i<y.furnishing.length;i++)
-            temp+=','+y.furnishing[i]
-        filter+=temp
+		var temp = "";
+		if (y.bhk.length) temp = "&bhk=" + y.bhk[0];
+		for (var i = 1; i < y.bhk.length; i++) temp += "," + y.bhk[i];
+		filter += temp;
 
-        temp=""
-        if(y.available_for.length)
-            temp="&available_for="+y.available_for[0]
-        for(i=1;i<y.available_for.length;i++)
-            temp+=','+y.available_for[i]
-        filter+=temp
-        
+		temp = "";
+		if (y.property_type.length) temp = "&property_type=" + y.property_type[0];
+		for (i = 1; i < y.property_type.length; i++) temp += "," + y.property_type[i];
+		filter += temp;
 
-        console.log(filter)
+		temp = "";
+		if (y.furnishing.length) temp = "&furnishing=" + y.furnishing[0];
+		for (i = 1; i < y.furnishing.length; i++) temp += "," + y.furnishing[i];
+		filter += temp;
 
-        fetch(`${process.env.REACT_APP_API_URL}/api/datalist/${filter}`,{
-            method:'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'start':start,
-                'end':end,
-            },
-        }).then( resp => resp.json()).then(res=> setProperty(res))
-        .catch( err => console.log(err))
-    },[props.filterValues])
+		temp = "";
+		if (y.available_for.length) temp = "&available_for=" + y.available_for[0];
+		for (i = 1; i < y.available_for.length; i++) temp += "," + y.available_for[i];
+		filter += temp;
 
-    function ShowImage(item){
-        return(
-            <div class="carousel slide carousel-fade" data-ride="carousel">
-                <div class="carousel-inner" >
-                    <div class="carousel-item active" data-interval="1500">
-                        <img src={item[0]} class="d-block w-100" alt={item[0]} />
-                    </div>
-                    <div class="carousel-item " data-interval="1500">
-                        <img src={item[1]} class="d-block w-100" alt={item[1]} />
-                    </div>
-                    <div class="carousel-item " data-interval="1500">
-                        <img src={item[2]} class="d-block w-100" alt={item[2]} />
-                    </div>
-                    <div class="carousel-item " data-interval="1500">
-                        <img src={item[3]} class="d-block w-100" alt={item[3]} />
-                    </div>
-                </div>
-            </div>
-        );
-    }
-    
-    // function CreateCard(item) {
-    //     const PropertyDetails = () => {
-    //         window.location.href=`/home/${item.id}`
-    //     }
+		console.log(filter);
+
+		fetch(`${process.env.REACT_APP_API_URL}/api/datalist/${filter}`, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				"start": start,
+				"end": end,
+			},
+		})
+			.then((resp) => resp.json())
+			.then((res) => setProperty(res))
+			.catch((err) => console.log(err));
+	}, [props.filterValues]);
+
+	function ShowImage(item) {
+		return (
+			<div class="carousel slide carousel-fade" data-ride="carousel">
+				<div class="carousel-inner">
+					<div class="carousel-item active" data-interval="1500">
+						<img src={item[0]} class="d-block w-100" alt={item[0]} />
+					</div>
+					<div class="carousel-item " data-interval="1500">
+						<img src={item[1]} class="d-block w-100" alt={item[1]} />
+					</div>
+					<div class="carousel-item " data-interval="1500">
+						<img src={item[2]} class="d-block w-100" alt={item[2]} />
+					</div>
+					<div class="carousel-item " data-interval="1500">
+						<img src={item[3]} class="d-block w-100" alt={item[3]} />
+					</div>
+				</div>
+			</div>
+		);
+	}
+
+	// function CreateCard(item) {
+	//     const PropertyDetails = () => {
+	//         window.location.href=`/home/${item.id}`
+	//     }
 
 	function CreateCard(item) {
 		const PropertyDetails = () => {
 			window.location.href = `/home/${item.id}`;
 		};
-
 
 		return (
 			<div className="carditem row">
@@ -126,5 +119,3 @@ function HomePageCard(props) {
 }
 
 export default HomePageCard;
-
-

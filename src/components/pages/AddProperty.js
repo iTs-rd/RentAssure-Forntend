@@ -19,23 +19,23 @@ class AddProperty extends Component {
 			balconies: null,
 			Kitchen: null,
 			area: null,
-			parking: null,
-			lift: null,
-			swimming_pool: null,
-			gym: null,
-			gas_pipeline: null,
+			parking: false,
+			lift: false,
+			swimming_pool: false,
+			gym: false,
+			gas_pipeline: false,
 			electricity_charge: null,
 			electricity_supply: null,
-			Power_backup: null,
+			Power_backup: false,
 			water_charge: null,
 			water_supply: null,
-			water_purifier: null,
-			fridge: null,
-			washing_machine: null,
-			CCTV: null,
-			guard: null,
-			medical: null,
-			fire_alarme: null,
+			water_purifier: false,
+			fridge: false,
+			washing_machine: false,
+			CCTV: false,
+			guard: false,
+			medical: false,
+			fire_alarme: false,
 			cleaning: null,
 			furnished: null,
 			available_for: null,
@@ -92,11 +92,12 @@ class AddProperty extends Component {
 			[event.target.name]: event.target.value,
 		});
 	}
-	handleImageChange = (event) => {
+
+	check(event) {
 		this.setState({
-			[event.target.id]: event.target.files[0],
+			[event.target.name]: event.target.checked,
 		});
-	};
+	}
 
 	logout = () => {
 		document.cookie = "auth=" + this.state.token + ";max-age=0";
@@ -129,12 +130,13 @@ class AddProperty extends Component {
 
 	render() {
 		return (
-			<Row>
+			<Row className="mx-2">
+				{/* {console.log(state)} */}
 				<h1>Add Property</h1>
 				<Form id="property-form">
 					<Form.Row className="align-items-center">
 						<Col xs="auto">
-							<h5 className="mx-1 my-1">Property Type</h5>
+							<h5 className="mx-1 my-1">Property Type*</h5>
 						</Col>
 						<Col xs="auto" className="my-1">
 							<Form.Control
@@ -157,12 +159,12 @@ class AddProperty extends Component {
 					</Form.Row>
 
 					<Form.Group controlId="title">
-						<Form.Label>1 . Property Title</Form.Label>
+						<Form.Label>1 . Property Title*</Form.Label>
 						<Form.Control name="title" onChange={this.eventHandler} value={this.state.title} placeholder="2BHK House in Mayur Vihar,Delhi" required />
 					</Form.Group>
 
 					<Form.Group controlId="description">
-						<Form.Label>2 . Description of Property</Form.Label>
+						<Form.Label>2 . Description of Property*</Form.Label>
 						<Form.Control
 							as="textarea"
 							name="description"
@@ -174,18 +176,18 @@ class AddProperty extends Component {
 					</Form.Group>
 
 					<Form.Group controlId="address">
-						<Form.Label>3 . Address</Form.Label>
+						<Form.Label>3 . Address*</Form.Label>
 						<Form.Control name="address" onChange={this.eventHandler} value={this.state.address} id="address" placeholder="1234 Main St" required />
 					</Form.Group>
 
 					<Form.Row>
 						<Form.Group as={Col} controlId="city">
-							<Form.Label>4 . City</Form.Label>
+							<Form.Label>4 . City*</Form.Label>
 							<Form.Control name="city" onChange={this.eventHandler} value={this.state.city} id="city" placeholder="City" required />
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="state">
-							<Form.Label>5 . State</Form.Label>
+							<Form.Label>5 . State*</Form.Label>
 							<Form.Control name="state" onChange={this.eventHandler} value={this.state.state} id="state" placeholder="State" required />
 						</Form.Group>
 
@@ -197,17 +199,10 @@ class AddProperty extends Component {
 					<Form.Row>
 						<Form.Group as={Col} controlId="owner_name">
 							<Form.Label>7 . Owner Name</Form.Label>
-							<Form.Control
-								name="owner_name"
-								onChange={this.eventHandler}
-								value={this.state.owner_name}
-								id="owner_name"
-								placeholder="Owner Name"
-								required
-							/>
+							<Form.Control name="owner_name" onChange={this.eventHandler} value={this.state.owner_name} id="owner_name" placeholder="Owner Name" />
 						</Form.Group>
 						<Form.Group as={Col} controlId="owner_phone_no1">
-							<Form.Label>8 . Owner Phone No.</Form.Label>
+							<Form.Label>8 . Owner Phone No.*</Form.Label>
 							<Form.Control
 								type="number"
 								name="owner_phone_no1"
@@ -220,7 +215,7 @@ class AddProperty extends Component {
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="posted_by">
-							<Form.Label>9 . Posted By</Form.Label>
+							<Form.Label>9 . Posted By*</Form.Label>
 							<Form.Control
 								as="select"
 								name="posted_by"
@@ -242,8 +237,8 @@ class AddProperty extends Component {
 							<Form.Group>
 								<img src={this.state.img1} alt="No Image Here" className="boder border-dark border-top border-left" />
 								<Form.Group>
-									<label for="img1">Image 1</label>
-									<input type="file" name="img1" class="form-control-file" id="img1" onChange={this.eventHandler} />
+									<label for="img1">Image 1*</label>
+									<input type="file" name="img1" class="form-control-file" id="img1" onChange={this.eventHandler} required />
 								</Form.Group>
 							</Form.Group>
 						</Col>
@@ -251,8 +246,8 @@ class AddProperty extends Component {
 							<Form.Group>
 								<img src={this.state.img2} alt="No Image Here" className="boder border-dark border-top border-left" />
 								<Form.Group>
-									<label for="img2">Image 2</label>
-									<input type="file" name="img2" class="form-control-file" id="img2" onChange={this.eventHandler} />
+									<label for="img2">Image 2*</label>
+									<input type="file" name="img2" class="form-control-file" id="img2" onChange={this.eventHandler} required />
 								</Form.Group>
 							</Form.Group>
 						</Col>
@@ -269,7 +264,7 @@ class AddProperty extends Component {
 							<Form.Group>
 								<img src={this.state.img4} alt="No Image Here" className="boder border-dark border-top border-left" />
 								<Form.Group>
-									<label for="img1">Image 4</label>
+									<label for="img4">Image 4</label>
 									<input type="file" name="img4" class="form-control-file" id="img4" onChange={this.eventHandler} />
 								</Form.Group>
 							</Form.Group>
@@ -295,6 +290,7 @@ class AddProperty extends Component {
                         </Form.Group>
 
                         })} */}
+
 						<Form.Group as={Col} controlId="bedroom">
 							<Form.Label>Bedroom</Form.Label>
 							<Form.Control
@@ -345,7 +341,7 @@ class AddProperty extends Component {
 							/>
 						</Form.Group>
 						<Form.Group as={Col} controlId="area">
-							<Form.Label>Area</Form.Label>
+							<Form.Label>Area*</Form.Label>
 							<Form.Control
 								type="number"
 								name="area"
@@ -354,6 +350,7 @@ class AddProperty extends Component {
 								class="form-control"
 								id="area"
 								placeholder="Buildup Area"
+								required
 							/>
 						</Form.Group>
 					</Form.Row>
@@ -361,42 +358,14 @@ class AddProperty extends Component {
 					<h3 className="my-4">Other Facilities</h3>
 
 					<Row className="my-3">
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Parking </Form.Label>
-								<select name="parking" id="parking" onChange={this.eventHandler} value={this.state.parking}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-2">Lift</Form.Label>
-								<select name="lift" id="lift" onChange={this.eventHandler} value={this.state.lift}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Swimming Pool</Form.Label>
-								<select name="swimming_pool" id="swimming_pool" onChange={this.eventHandler} value={this.state.swimming_pool}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Gym</Form.Label>
-								<select name="gym" id="gym" onChange={this.eventHandler} value={this.state.gym}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
+						{["parking", "lift", "swimming_pool", "gym"].map((type) => (
+							<Col md={3}>
+								<Form.Row>
+									<p className="text-capitalize">{type}</p>
+									<Form.Check name={type} type="checkbox" id={type} onChange={this.check} />
+								</Form.Row>
+							</Col>
+						))}
 					</Row>
 					<Row className="my-3">
 						<Col md={3}>
@@ -556,11 +525,12 @@ class AddProperty extends Component {
 						</Col>
 						<Col md={3}>
 							<Form.Group>
-								<Form.Label className="mx-1">Furnished</Form.Label>
+								<Form.Label className="mx-1">Furnished*</Form.Label>
 								<select name="furnished" id="furnished" onChange={this.eventHandler} value={this.state.furnished}>
 									<option value="FullyFurnished">FullyFurnished</option>
 									<option value="SemiFurnished">SemiFurnished</option>
 									<option value="Unfurnished">Unfurnished</option>
+									required
 								</select>
 							</Form.Group>
 						</Col>
@@ -569,7 +539,7 @@ class AddProperty extends Component {
 					<Row className="my-3">
 						<Col md={4}>
 							<Form.Group>
-								<Form.Label className="mx-1">Available For</Form.Label>
+								<Form.Label className="mx-1">Available For*</Form.Label>
 								<select name="available_for" id="available_for" onChange={this.eventHandler} value={this.state.available_for}>
 									<option value="Any">Any</option>
 									<option value="Family">Family</option>
@@ -579,6 +549,7 @@ class AddProperty extends Component {
 									<option value="GovernmentEmployee">Government Employee</option>
 									<option value="Girl">Girl</option>
 									<option value="Boy">Boy</option>
+									required
 								</select>
 							</Form.Group>
 						</Col>
@@ -607,7 +578,7 @@ class AddProperty extends Component {
 							<Form.Group>
 								<Row>
 									<Col md={4}>
-										<Form.Label className="mx-1 my-1">Rent</Form.Label>
+										<Form.Label className="mx-1 my-1">Rent*</Form.Label>
 									</Col>
 									<Col md={8}>
 										<input
@@ -618,6 +589,7 @@ class AddProperty extends Component {
 											class="form-control"
 											id="rent"
 											placeholder="Rent"
+											required
 										/>
 									</Col>
 								</Row>

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
-import { Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Row, Col, Button } from "react-bootstrap";
 import MyCard from "./MyCard";
+import React from "react";
 
 function ShowUserProperty(props) {
 	const [token, setToken] = useCookies(["auth"]);
@@ -40,7 +42,9 @@ function ShowUserProperty(props) {
 			},
 		})
 			.then((resp) => resp.json())
-			.then((res) => setProperty(res))
+			.then((res) => {
+				setProperty(res);
+			})
 			.catch((error) => console.log(error));
 	}, [userId]);
 
@@ -48,6 +52,30 @@ function ShowUserProperty(props) {
 		console.log("hii");
 		document.cookie = "auth=" + token["auth"] + ";max-age=0";
 		window.location.reload();
+	};
+
+	const count = properties.length;
+
+	const AddSomething = () => {
+		return (
+			<React.Fragment>
+				<Row>
+					<Col md={{ span: 4, offset: 4 }} className=" my-5">
+						<h1 className="mx-5 px-5">
+							<i class="fas fa-glasses fa-4x"></i>
+						</h1>
+						<h3>Nothing to show here</h3>
+						<Row md={3} className="mx-5">
+							<Link to="/add">
+								<Button variant="dark" className=" my-2 mx-5 button rounded ">
+									Add Property
+								</Button>
+							</Link>
+						</Row>
+					</Col>
+				</Row>
+			</React.Fragment>
+		);
 	};
 
 	function ShowProduct(item) {
@@ -66,10 +94,9 @@ function ShowUserProperty(props) {
 							{item.title}
 						</div>
 						<div>
-							<button type="button" onClick={PropertyDetail} class="btn btn-info rounded" gradient="peach">
+							<button type="button" onClick={PropertyDetail} class="btn btn-info rounded">
 								edit
 							</button>
-							;
 						</div>
 					</div>
 					<div className="col-6 col-md-4 rent f-small">
@@ -108,7 +135,11 @@ function ShowUserProperty(props) {
 				</Col>
 			</Row>
 			<br />
-			<div className="homepagecard row">{properties.map((property) => ShowProduct(property))}</div>
+
+			<div className="homepagecard row">
+				{console.log(count)}
+				{count > 0 ? properties.map((property) => ShowProduct(property)) : <AddSomething />}
+			</div>
 		</div>
 	);
 }

@@ -25,12 +25,12 @@ function Filter(props) {
             "gas_pipeline":"",
             "fire_alarme":"",
         }
-        
+
         filterValue.pin=document.getElementById("pincode").value
 
         filterValue.rent__gte=document.getElementById("minimumPrice").value
         filterValue.rent__lte=document.getElementById("maximumPrice").value
-        
+
         if(document.getElementById("1RK/1BHK").checked)
             filterValue.bhk.push("1RK/1BHK")
         if(document.getElementById("2BHK").checked)
@@ -48,14 +48,14 @@ function Filter(props) {
             filterValue.property_type.push("Room")
         if(document.getElementById("Flat").checked)
             filterValue.property_type.push("Flat")
-        
+
         if(document.getElementById("Furnishing").checked)
             filterValue.furnishing.push("Furnishing")
         if(document.getElementById("SemiFurnished").checked)
             filterValue.furnishing.push("SemiFurnished")
         if(document.getElementById("Unfurnished").checked)
             filterValue.furnishing.push("Unfurnished")
-        
+
         filterValue.area__gte=document.getElementById("minimumArea").value
         filterValue.area__lte=document.getElementById("maximumArea").value
 
