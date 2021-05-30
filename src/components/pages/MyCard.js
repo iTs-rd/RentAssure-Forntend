@@ -4,7 +4,7 @@ import { Card, Button, Carousel } from "react-bootstrap";
 
 const MyCard = (props) => {
 	return (
-		<Card style={{ width: "20rem" }}>
+		<Card>
 			{/* <MyCarousel /> */}
 			<Carousel>
 				<Carousel.Item>

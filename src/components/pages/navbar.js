@@ -1,9 +1,28 @@
-// import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import logo from "../assets/images/logo.png";
 import "../css/navbar.css";
 
 function Navbar() {
-    // const [token, setToken] = useCookies(['auth']);
+    const [token, setToken] = useCookies(["auth"]);
+    const [name, setName]= useState("");
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}/api/viewuser/`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${token["auth"]}`,
+            },
+        })
+        .then((resp) => resp.json())
+        .then((res) => {
+            if (res.message === "ok") {
+                console.log(res);
+                setName(res.result.firstname)
+            }
+        })
+        .catch((error) => console.log(error));
+    }, []);
     
     function NavItem(){
         return(
@@ -24,10 +43,11 @@ function Navbar() {
                     <a className="nav-link " href="/add"><i className="fas fa-clinic-medical"></i>Add Property</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link " href="/login"><i className="fas fa-sign-in-alt"></i>Signin</a>
-                    {/* {token?<a className="nav-link " href="/profile"><i className="fas fa-sign-in-alt"></i>Profile</a>
-                    :
-                    <a className="nav-link " href="/login"><i className="fas fa-sign-in-alt"></i>Signin</a>} */}
+                    {(token["auth"])?
+                        <a className="nav-link " href="/profile"><i className="fas fa-user-alt"></i>{name}</a>
+                        :    
+                        <a className="nav-link " href="/login"><i className="fas fa-sign-in-alt"></i>Signin</a>
+                    }
                 </li>
             </ul>
         );
