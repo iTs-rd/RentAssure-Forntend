@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MyCard from "./MyCard";
 import "../css/HomePageCard.css";
+import $ from "jquery";
 
 function HomePageCard(props) {
 	var start = 0;
@@ -48,31 +49,24 @@ function HomePageCard(props) {
 			.catch((err) => console.log(err));
 	}, [props.filterValues]);
 
-	function ShowImage(item) {
-		return (
-			<div class="carousel slide carousel-fade" data-ride="carousel">
-				<div class="carousel-inner">
-					<div class="carousel-item active" data-interval="1500">
-						<img src={item[0]} class="d-block w-100" alt={item[0]} />
-					</div>
-					<div class="carousel-item " data-interval="1500">
-						<img src={item[1]} class="d-block w-100" alt={item[1]} />
-					</div>
-					<div class="carousel-item " data-interval="1500">
-						<img src={item[2]} class="d-block w-100" alt={item[2]} />
-					</div>
-					<div class="carousel-item " data-interval="1500">
-						<img src={item[3]} class="d-block w-100" alt={item[3]} />
-					</div>
-				</div>
-			</div>
-		);
-	}
-
-	// function CreateCard(item) {
-	//     const PropertyDetails = () => {
-	//         window.location.href=`/home/${item.id}`
-	//     }
+	// For fade in animation of card
+	useEffect(() => {
+		var doAnimations = function () {
+			var offset = $(window).scrollTop() + $(window).height(),
+				$animatables = $(".animatable");
+			if ($animatables.length == 0) {
+				$(window).off("scroll", doAnimations);
+			}
+			$animatables.each(function (i) {
+				var $animatable = $(this);
+				if ($animatable.offset().top + $animatable.height() - 20 < offset) {
+					$animatable.removeClass("animatable").addClass("animated");
+				}
+			});
+		};
+		$(window).on("scroll", doAnimations);
+		$(window).trigger("scroll");
+	});
 
 	function CreateCard(item) {
 		const PropertyDetails = () => {
@@ -80,8 +74,8 @@ function HomePageCard(props) {
 		};
 
 		return (
-			<div className="carditem row">
-				<div className="col-12 col-md-4" style={{ padding: "0" }} onClick={PropertyDetails}>
+			<div className="carditem row animatable bounceIn">
+				<div className="col-12 col-md-4" style={{ padding: "0" }}>
 					<MyCard img1={item.img1} img2={item.img2} img3={item.img3} img4={item.img4} />
 				</div>
 				<div className="col-12 col-md-8 row content">
