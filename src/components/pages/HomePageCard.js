@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MyCard from "./MyCard";
-import "../css/HomePageCard.css";
+import "../css/homepage.css";
 import $ from "jquery";
 
 function HomePageCard(props) {
