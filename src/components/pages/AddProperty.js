@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, useState, useEffect } from "react";
 import { withCookies } from "react-cookie";
 import { Form, Row, Col, Button } from "react-bootstrap";
 
@@ -28,7 +28,7 @@ class AddProperty extends Component {
 			electricity_supply: null,
 			Power_backup: false,
 			water_charge: null,
-			water_supply: null,
+			water_supply: false,
 			water_purifier: false,
 			fridge: false,
 			washing_machine: false,
@@ -93,11 +93,11 @@ class AddProperty extends Component {
 		});
 	}
 
-	check(event) {
-		this.setState({
-			[event.target.name]: event.target.checked,
-		});
-	}
+	// toggleChange = (event) => {
+	// 	this.setState({
+	// 		parking: !this.state.parking,
+	// 	});
+	// };
 
 	logout = () => {
 		document.cookie = "auth=" + this.state.token + ";max-age=0";
@@ -131,7 +131,6 @@ class AddProperty extends Component {
 	render() {
 		return (
 			<Row className="mx-2">
-				{/* {console.log(state)} */}
 				<h1>Add Property</h1>
 				<Form id="property-form">
 					<Form.Row className="align-items-center">
@@ -159,12 +158,12 @@ class AddProperty extends Component {
 					</Form.Row>
 
 					<Form.Group controlId="title">
-						<Form.Label>1 . Property Title*</Form.Label>
+						<Form.Label as="h5">1 . Property Title*</Form.Label>
 						<Form.Control name="title" onChange={this.eventHandler} value={this.state.title} placeholder="2BHK House in Mayur Vihar,Delhi" required />
 					</Form.Group>
 
 					<Form.Group controlId="description">
-						<Form.Label>2 . Description of Property*</Form.Label>
+						<Form.Label as="h5">2 . Description of Property*</Form.Label>
 						<Form.Control
 							as="textarea"
 							name="description"
@@ -176,46 +175,59 @@ class AddProperty extends Component {
 					</Form.Group>
 
 					<Form.Group controlId="address">
-						<Form.Label>3 . Address*</Form.Label>
+						<Form.Label as="h5">3 . Address*</Form.Label>
 						<Form.Control name="address" onChange={this.eventHandler} value={this.state.address} id="address" placeholder="1234 Main St" required />
 					</Form.Group>
 
 					<Form.Row>
 						<Form.Group as={Col} controlId="city">
-							<Form.Label>4 . City*</Form.Label>
+							<Form.Label as="h5">4 . City*</Form.Label>
 							<Form.Control name="city" onChange={this.eventHandler} value={this.state.city} id="city" placeholder="City" required />
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="state">
-							<Form.Label>5 . State*</Form.Label>
+							<Form.Label as="h5">5 . State*</Form.Label>
 							<Form.Control name="state" onChange={this.eventHandler} value={this.state.state} id="state" placeholder="State" required />
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="pin">
-							<Form.Label>6 . Pin Code</Form.Label>
+							<Form.Label as="h5">6 . Pin Code</Form.Label>
 							<Form.Control name="pin" onChange={this.eventHandler} value={this.state.pin} id="pin" placeholder="Pin Code" />
 						</Form.Group>
 					</Form.Row>
 					<Form.Row>
 						<Form.Group as={Col} controlId="owner_name">
-							<Form.Label>7 . Owner Name</Form.Label>
+							<Form.Label as="h5">7 . Owner Name</Form.Label>
 							<Form.Control name="owner_name" onChange={this.eventHandler} value={this.state.owner_name} id="owner_name" placeholder="Owner Name" />
 						</Form.Group>
 						<Form.Group as={Col} controlId="owner_phone_no1">
-							<Form.Label>8 . Owner Phone No.*</Form.Label>
+							<Form.Label as="h5">8 . Owner Phone No.1*</Form.Label>
 							<Form.Control
-								type="number"
+								type="text"
 								name="owner_phone_no1"
 								onChange={this.eventHandler}
 								value={this.state.owner_phone_no1}
 								id="owner_phone_no1"
-								placeholder="Owner Phone No."
+								placeholder="Owner Phone No.1"
 								required
 							/>
 						</Form.Group>
-
+						<Form.Group as={Col} controlId="owner_phone_no2">
+							<Form.Label as="h5">9 . Owner Phone No.2</Form.Label>
+							<Form.Control
+								type="text"
+								name="owner_phone_no2"
+								onChange={this.eventHandler}
+								value={this.state.owner_phone_no2}
+								id="owner_phone_no2"
+								placeholder="Owner Phone No.2"
+								required
+							/>
+						</Form.Group>
+					</Form.Row>
+					<Form.Row>
 						<Form.Group as={Col} controlId="posted_by">
-							<Form.Label>9 . Posted By*</Form.Label>
+							<Form.Label as="h5">10 . Posted By*</Form.Label>
 							<Form.Control
 								as="select"
 								name="posted_by"
@@ -230,6 +242,22 @@ class AddProperty extends Component {
 								required
 							</Form.Control>
 						</Form.Group>
+						<Form.Group as={Col} controlId="agent_name">
+							<Form.Label as="h5">11 . Agent Name</Form.Label>
+							<Form.Control name="agent_name" onChange={this.eventHandler} value={this.state.agent_name} id="agent_name" placeholder="Agent Name" />
+						</Form.Group>
+						<Form.Group as={Col} controlId="age_of_property">
+							<Form.Label as="h5">12 . Age of Property</Form.Label>
+							<Form.Control
+								type="number"
+								name="age_of_property"
+								onChange={this.eventHandler}
+								value={this.state.age_of_property}
+								id="age_of_property"
+								placeholder="Property Age"
+								required
+							/>
+						</Form.Group>
 					</Form.Row>
 					<h3>Add Images</h3>
 					<Form.Row>
@@ -237,7 +265,9 @@ class AddProperty extends Component {
 							<Form.Group>
 								<img src={this.state.img1} alt="No Image Here" className="boder border-dark border-top border-left" />
 								<Form.Group>
-									<label for="img1">Image 1*</label>
+									<label for="img1">
+										<h6>Image 1*</h6>
+									</label>
 									<input type="file" name="img1" class="form-control-file" id="img1" onChange={this.eventHandler} required />
 								</Form.Group>
 							</Form.Group>
@@ -246,7 +276,9 @@ class AddProperty extends Component {
 							<Form.Group>
 								<img src={this.state.img2} alt="No Image Here" className="boder border-dark border-top border-left" />
 								<Form.Group>
-									<label for="img2">Image 2*</label>
+									<label for="img2">
+										<h6>Image 2*</h6>
+									</label>
 									<input type="file" name="img2" class="form-control-file" id="img2" onChange={this.eventHandler} required />
 								</Form.Group>
 							</Form.Group>
@@ -255,7 +287,9 @@ class AddProperty extends Component {
 							<Form.Group>
 								<img src={this.state.img3} alt="No Image Here" className="boder border-dark border-top border-left" />
 								<Form.Group>
-									<label for="img3">Image 3</label>
+									<label for="img3">
+										<h6>Image 3</h6>
+									</label>
 									<input type="file" name="img3" class="form-control-file" id="img3" onChange={this.eventHandler} />
 								</Form.Group>
 							</Form.Group>
@@ -264,7 +298,9 @@ class AddProperty extends Component {
 							<Form.Group>
 								<img src={this.state.img4} alt="No Image Here" className="boder border-dark border-top border-left" />
 								<Form.Group>
-									<label for="img4">Image 4</label>
+									<label for="img4">
+										<h6>Image 4</h6>
+									</label>
 									<input type="file" name="img4" class="form-control-file" id="img4" onChange={this.eventHandler} />
 								</Form.Group>
 							</Form.Group>
@@ -272,27 +308,8 @@ class AddProperty extends Component {
 					</Form.Row>
 					<h3 className="my-4">About the Property</h3>
 					<Form.Row>
-						{/*
-                        //## Here I am running the loop but i am not able to do it
-                        <Form.Row>
-                        {about1.map(item => {
-                            <Form.Group as={Col} controlId={item}>
-                            <Form.Label>{item}</Form.Label>
-                            <Form.Control
-                                type="number"
-                                name={item}
-                                onChange={this.eventHandler}
-                                value={this.state.{item}}
-                                class="form-control"
-                                id={item}
-                                placeholder={item}
-                            />
-                        </Form.Group>
-
-                        })} */}
-
 						<Form.Group as={Col} controlId="bedroom">
-							<Form.Label>Bedroom</Form.Label>
+							<Form.Label as="h6">Bedroom</Form.Label>
 							<Form.Control
 								type="number"
 								name="bedroom"
@@ -304,7 +321,7 @@ class AddProperty extends Component {
 							/>
 						</Form.Group>
 						<Form.Group as={Col} controlId="bathroom">
-							<Form.Label>Bathroom</Form.Label>
+							<Form.Label as="h6">Bathroom</Form.Label>
 							<Form.Control
 								type="number"
 								name="bathroom"
@@ -316,7 +333,7 @@ class AddProperty extends Component {
 							/>
 						</Form.Group>
 						<Form.Group as={Col} controlId="kitchen">
-							<Form.Label>Kitchen</Form.Label>
+							<Form.Label as="h6">Kitchen</Form.Label>
 							<Form.Control
 								type="number"
 								name="kitchen"
@@ -329,7 +346,7 @@ class AddProperty extends Component {
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="balconies">
-							<Form.Label>Balcony</Form.Label>
+							<Form.Label as="h6">Balcony</Form.Label>
 							<Form.Control
 								type="number"
 								name="balconies"
@@ -341,7 +358,7 @@ class AddProperty extends Component {
 							/>
 						</Form.Group>
 						<Form.Group as={Col} controlId="area">
-							<Form.Label>Area*</Form.Label>
+							<Form.Label as="h6">Area*</Form.Label>
 							<Form.Control
 								type="number"
 								name="area"
@@ -358,30 +375,327 @@ class AddProperty extends Component {
 					<h3 className="my-4">Other Facilities</h3>
 
 					<Row className="my-3">
-						{["parking", "lift", "swimming_pool", "gym"].map((type) => (
-							<Col md={3}>
-								<Form.Row>
-									<p className="text-capitalize">{type}</p>
-									<Form.Check name={type} type="checkbox" id={type} onChange={this.check} />
-								</Form.Row>
-							</Col>
-						))}
+						<Col md={3}>
+							<Form.Row>
+								<h5>Parking</h5>
+								<Form.Check>
+									{console.log(this.state.parking)}
+									<input
+										name="parking"
+										defaultChecked={this.state.parking}
+										type="checkbox"
+										id="parking"
+										onChange={() => {
+											this.setState({
+												parking: !this.state.parking,
+											});
+										}}
+									/>
+									{console.log(this.state.parking)}
+								</Form.Check>
+							</Form.Row>
+						</Col>
+						<Col md={3}>
+							<Form.Row>
+								<h5>Gym</h5>
+								<Form.Check>
+									<input
+										name="gym"
+										defaultChecked={this.state.gym}
+										type="checkbox"
+										id="gym"
+										onChange={() => {
+											this.setState({
+												gym: !this.state.gym,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+						<Col md={3}>
+							<Form.Row>
+								<h5>Swimming Pool</h5>
+								<Form.Check>
+									<input
+										name="swimming_pool"
+										defaultChecked={this.state.swimming_pool}
+										type="checkbox"
+										id="swimming_pool"
+										onChange={() => {
+											this.setState({
+												swimming_pool: !this.state.swimming_pool,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+						<Col md={3}>
+							<Form.Row>
+								<h5>Lift</h5>
+								<Form.Check>
+									<input
+										name="lift"
+										defaultChecked={this.state.lift}
+										type="checkbox"
+										id="lift"
+										onChange={() => {
+											this.setState({
+												lift: !this.state.lift,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
 					</Row>
+
 					<Row className="my-3">
 						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1 px-1">Gas Pipeline</Form.Label>
-								<select name="gas_pipeline" id="gas_pipeline" onChange={this.eventHandler} value={this.state.gas_pipeline}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
+							<Form.Row>
+								<h5>Electricity Supply</h5>
+								<Form.Check>
+									<input
+										name="electricity_supply"
+										defaultChecked={this.state.electricity_supply}
+										type="checkbox"
+										id="electricity_supply"
+										onChange={() => {
+											this.setState({
+												electricity_supply: !this.state.electricity_supply,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
 						</Col>
-						<Col md={4}>
+						<Col md={3}>
+							<Form.Row>
+								<h5>Power Backup</h5>
+								<Form.Check>
+									<input
+										name="Power_backup"
+										defaultChecked={this.state.Power_backup}
+										type="checkbox"
+										id="Power_backup"
+										onChange={() => {
+											this.setState({
+												Power_backup: !this.state.Power_backup,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+						<Col md={3}>
+							<Form.Row>
+								<h5>Water Supply(24*7)</h5>
+								<Form.Check>
+									<input
+										name="water_supply"
+										defaultChecked={this.state.water_supply}
+										type="checkbox"
+										id="water_supply"
+										onChange={() => {
+											this.setState({
+												water_supply: !this.state.water_supply,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+						<Col md={3}>
+							<Form.Row>
+								<h5>Water Purifier</h5>
+								<Form.Check>
+									<input
+										name="water_purifier"
+										defaultChecked={this.state.water_purifier}
+										type="checkbox"
+										id="water_purifier"
+										onChange={() => {
+											this.setState({
+												water_purifier: !this.state.water_purifier,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+					</Row>
+					<Row className="my-3">
+						{/* fridge, washing_machine, cctv guard */}
+						<Col md={3}>
+							<Form.Row>
+								<h5>Fridge</h5>
+								<Form.Check>
+									<input
+										name="fridge"
+										defaultChecked={this.state.fridge}
+										type="checkbox"
+										id="fridge"
+										onChange={() => {
+											this.setState({
+												fridge: !this.state.fridge,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+						<Col md={3}>
+							<Form.Row>
+								<h5>Washing Machine</h5>
+								<Form.Check>
+									<input
+										name="washing_machine"
+										defaultChecked={this.state.washing_machine}
+										type="checkbox"
+										id="washing_machine"
+										onChange={() => {
+											this.setState({
+												washing_machine: !this.state.washing_machine,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+						<Col md={3}>
+							<Form.Row>
+								<h5>CCTV</h5>
+								<Form.Check>
+									<input
+										name="CCTV"
+										defaultChecked={this.state.CCTV}
+										type="checkbox"
+										id="CCTV"
+										onChange={() => {
+											this.setState({
+												CCTV: !this.state.CCTV,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+						<Col md={3}>
+							<Form.Row>
+								<h5>Guard</h5>
+								<Form.Check>
+									<input
+										name="guard"
+										defaultChecked={this.state.guard}
+										type="checkbox"
+										id="guard"
+										onChange={() => {
+											this.setState({
+												guard: !this.state.guard,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+					</Row>
+					<Row className="my-3">
+						{/* Emergency Medical Facilty, Fire Alarm */}
+						<Col md={3}>
+							<Form.Row>
+								<h5>Medical Facilty</h5>
+								<Form.Check>
+									<input
+										name="medical"
+										defaultChecked={this.state.medical}
+										type="checkbox"
+										id="medical"
+										onChange={() => {
+											this.setState({
+												medical: !this.state.medical,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+						<Col md={3}>
+							<Form.Row>
+								<h5>Fire Alarm</h5>
+								<Form.Check>
+									<input
+										name="fire_alarme"
+										defaultChecked={this.state.fire_alarme}
+										type="checkbox"
+										id="fire_alarme"
+										onChange={() => {
+											this.setState({
+												fire_alarme: !this.state.fire_alarme,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+						<Col md={3}>
+							<Form.Row>
+								<Col md={6}>
+									<Form.Label className="mx-1" as="h5">
+										Cleaning
+									</Form.Label>
+								</Col>
+								<Col md={6}>
+									<select name="cleaning" id="cleaning" onChange={this.eventHandler} value={this.state.cleaning}>
+										<option value="No">No</option>
+										<option value="Daily">Daily</option>
+										<option value="Weekly">Weekly</option>
+									</select>
+								</Col>
+							</Form.Row>
+						</Col>
+						<Col md={3}>
+							<Form.Row>
+								<Form.Label className="mx-1" as="h5">
+									Furnished*
+								</Form.Label>
+								<select name="furnished" id="furnished" onChange={this.eventHandler} value={this.state.furnished}>
+									<option value="FullyFurnished">FullyFurnished</option>
+									<option value="SemiFurnished">SemiFurnished</option>
+									<option value="Unfurnished">Unfurnished</option>
+									required
+								</select>
+							</Form.Row>
+						</Col>
+					</Row>
+					<br />
+					<br />
+					<Row className="my-3">
+						<Col md={3}>
+							<Form.Row>
+								<h5>Gas Pipeline</h5>
+								<Form.Check>
+									<input
+										name="gas_pipeline"
+										defaultChecked={this.state.gas_pipeline}
+										type="checkbox"
+										id="gas_pipeline"
+										onChange={() => {
+											this.setState({
+												gas_pipeline: !this.state.gas_pipeline,
+											});
+										}}
+									/>
+								</Form.Check>
+							</Form.Row>
+						</Col>
+						<Col md={5}>
 							<Form.Group>
 								<Row>
-									<Col md={5}>
-										<Form.Label className="mx-1 my-1">Electricity Charge</Form.Label>
+									<Col md={6}>
+										<Form.Label className="my-1">
+											<h5>Electricity Charge</h5>
+										</Form.Label>
 									</Col>
 									<Col md={6}>
 										<input
@@ -400,10 +714,12 @@ class AddProperty extends Component {
 						<Col md={4}>
 							<Form.Group>
 								<Row>
-									<Col md={5}>
-										<Form.Label className="mx-1 my-1">Water Charge</Form.Label>
+									<Col md={{ span: 5, offset: 2 }}>
+										<Form.Label className="my-1" as="h5">
+											Water Charge
+										</Form.Label>
 									</Col>
-									<Col md={6}>
+									<Col md={5}>
 										<input
 											type="number"
 											name="water_charge"
@@ -418,128 +734,15 @@ class AddProperty extends Component {
 							</Form.Group>
 						</Col>
 					</Row>
-					<Row className="my-3">
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Electricity Supply</Form.Label>
-								<select name="electricity_supply" id="electricity_supply" onChange={this.eventHandler} value={this.state.electricity_supply}>
-									<option value="True">Available 24*7</option>
-									<option value="False">Not available 24*7</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Power Backup</Form.Label>
-								<select name="Power_backup" id="Power_backup" onChange={this.eventHandler} value={this.state.Power_backup}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Water Supply</Form.Label>
-								<select name="water_supply" id="water_supply" onChange={this.eventHandler} value={this.state.water_supply}>
-									<option value="True">Available 24*7</option>
-									<option value="False">Not available 24*7</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Water Purifier</Form.Label>
-								<select name="water_purifier" id="water_purifier" onChange={this.eventHandler} value={this.state.water_purifier}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
-					</Row>
-					<Row className="my-3">
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Fridge</Form.Label>
-								<select name="fridge" id="fridge" onChange={this.eventHandler} value={this.state.fridge}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Washing Machine</Form.Label>
-								<select name="washing_machine" id="washing_machine" onChange={this.eventHandler} value={this.state.washing_machine}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">CCTV</Form.Label>
-								<select name="CCTV" id="CCTV" onChange={this.eventHandler} value={this.state.CCTV}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Guard</Form.Label>
-								<select name="guard" id="guard" onChange={this.eventHandler} value={this.state.guard}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
-					</Row>
-					<Row className="my-3">
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Medical</Form.Label>
-								<select name="medical" id="medical" onChange={this.eventHandler} value={this.state.medical}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Fire Alarm</Form.Label>
-								<select name="fire_alarme" id="fire_alarme" onChange={this.eventHandler} value={this.state.fire_alarme}>
-									<option value="True">Available</option>
-									<option value="False">Not available</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Cleaning</Form.Label>
-								<select name="cleaning" id="cleaning" onChange={this.eventHandler} value={this.state.cleaning}>
-									<option value="No">No</option>
-									<option value="Daily">Daily</option>
-									<option value="Weekly">Weekly</option>
-								</select>
-							</Form.Group>
-						</Col>
-						<Col md={3}>
-							<Form.Group>
-								<Form.Label className="mx-1">Furnished*</Form.Label>
-								<select name="furnished" id="furnished" onChange={this.eventHandler} value={this.state.furnished}>
-									<option value="FullyFurnished">FullyFurnished</option>
-									<option value="SemiFurnished">SemiFurnished</option>
-									<option value="Unfurnished">Unfurnished</option>
-									required
-								</select>
-							</Form.Group>
-						</Col>
-					</Row>
 
 					<Row className="my-3">
 						<Col md={4}>
-							<Form.Group>
-								<Form.Label className="mx-1">Available For*</Form.Label>
+							<Form.Row>
+								<Col md={6}>
+									<Form.Label className="mx-1" as="h5">
+										Available For*
+									</Form.Label>
+								</Col>
 								<select name="available_for" id="available_for" onChange={this.eventHandler} value={this.state.available_for}>
 									<option value="Any">Any</option>
 									<option value="Family">Family</option>
@@ -551,14 +754,16 @@ class AddProperty extends Component {
 									<option value="Boy">Boy</option>
 									required
 								</select>
-							</Form.Group>
+							</Form.Row>
 						</Col>
 
 						<Col md={4}>
-							<Form.Group>
+							<Form.Row>
 								<Row>
-									<Col md={5}>
-										<Form.Label className="mx-1 my-1">Available From</Form.Label>
+									<Col md={6}>
+										<Form.Label className="mx-1 my-1" as="h5">
+											Available From
+										</Form.Label>
 									</Col>
 									<Col md={6}>
 										<input
@@ -572,13 +777,15 @@ class AddProperty extends Component {
 										/>
 									</Col>
 								</Row>
-							</Form.Group>
+							</Form.Row>
 						</Col>
-						<Col md={2}>
+						<Col md={3}>
 							<Form.Group>
 								<Row>
 									<Col md={4}>
-										<Form.Label className="mx-1 my-1">Rent*</Form.Label>
+										<Form.Label className="mx-1 my-1" as="h5">
+											Rent*
+										</Form.Label>
 									</Col>
 									<Col md={8}>
 										<input
@@ -596,14 +803,19 @@ class AddProperty extends Component {
 							</Form.Group>
 						</Col>
 					</Row>
+					<br />
+					<br />
 					<Row className="my-3">
+						{/* one time charge, agreement dureationa */}
 						<Col md={6}>
 							<Form.Group>
 								<Row>
 									<Col md={3}>
-										<Form.Label className="mx-1 my-1">Additional Charge</Form.Label>
+										<Form.Label className="mx-1 my-1" as="h5">
+											Additional Charge
+										</Form.Label>
 									</Col>
-									<Col md={8}>
+									<Col md={6}>
 										<input
 											type="number"
 											name="additional_charge"
@@ -621,7 +833,9 @@ class AddProperty extends Component {
 							<Form.Group>
 								<Row>
 									<Col md={3}>
-										<Form.Label className="mx-1 my-1">Security Money</Form.Label>
+										<Form.Label className="mx-1 my-1" as="h5">
+											Security Money
+										</Form.Label>
 									</Col>
 									<Col md={6}>
 										<input
@@ -638,22 +852,53 @@ class AddProperty extends Component {
 							</Form.Group>
 						</Col>
 					</Row>
-
-					{/* <Form.Row>
-                        <Form.Group as={Col} controlId="formGridEmail">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
-                        </Form.Group>
-
-                        <Form.Group as={Col} controlId="formGridPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
-                        </Form.Group>
-                    </Form.Row> */}
-
-					{/* <Form.Group id="formGridCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
-                    </Form.Group> */}
+					<Row className="my-3">
+						{/* one time charge, agreement dureationa */}
+						<Col md={4}>
+							<Form.Group>
+								<Row>
+									<Col md={5}>
+										<Form.Label className="mx-1 my-1" as="h5">
+											One time charge
+										</Form.Label>
+									</Col>
+									<Col md={4}>
+										<input
+											type="number"
+											name="one_time_charge"
+											onChange={this.eventHandler}
+											value={this.state.one_time_charge}
+											class="form-control"
+											id="one_time_charge"
+											placeholder="One time charge"
+										/>
+									</Col>
+								</Row>
+							</Form.Group>
+						</Col>
+						<Col md={6}>
+							<Form.Group>
+								<Row>
+									<Col md={{ span: 4, offset: 3 }}>
+										<Form.Label className="mx-1 my-1" as="h5">
+											Agreement Duration
+										</Form.Label>
+									</Col>
+									<Col md={5}>
+										<input
+											type="number"
+											name="agreement_duration"
+											onChange={this.eventHandler}
+											value={this.state.agreement_duration}
+											class="form-control"
+											id="agreement_duration"
+											placeholder="Duration of Agreement"
+										/>
+									</Col>
+								</Row>
+							</Form.Group>
+						</Col>
+					</Row>
 
 					<Row>
 						<Col md={5}></Col>
@@ -665,335 +910,6 @@ class AddProperty extends Component {
 					</Row>
 				</Form>
 			</Row>
-			//             <div>
-			//                 <h1>edit property</h1>
-			//                 <form id="property-form">
-			//                     <div class="form-group">
-			//                         <label for="property_type">property_type</label>
-			//                         <select name="property_type" id="property_type" onChange={this.eventHandler} value={this.state.property_type}>
-			//                             <option value="House">House</option>
-			//                             <option value="Room">Room</option>
-			//                             <option value="Flat">Flat</option>
-			//                         </select>
-			//                     </div>
-
-			//                     <div class="form-group">
-			//                         <label for="title">title</label>
-			//                         <input
-			//                             type="text"
-			//                             name="title"
-			//                             onChange={this.eventHandler}
-			//                             value={this.state.title}
-			//                             class="form-control"
-			//                             id="title"
-			//                             placeholder="title"
-			//                         />
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="description">description</label>
-			//                         <textarea
-			//                             name="description"
-			//                             onChange={this.eventHandler}
-			//                             value={this.state.description}
-			//                             class="form-control"
-			//                             id="description"
-			//                             placeholder="description"
-			//                         />
-			//                     </div>
-			//                     {/* <div class="form-group">
-			//                         <label for="bedroom">bedroom</label>
-			//                         <input type="number" name="bedroom" onChange={this.eventHandler} value={this.state.bedroom} class="form-control" id="bedroom" placeholder="bedroom" />
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="bathroom">bathroom</label>
-			//                         <input type="number" name="bathroom" onChange={this.eventHandler} value={this.state.bathroom} class="form-control" id="bathroom" placeholder="bathroom" />
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="balconies">balconies</label>
-			//                         <input type="number" name="balconies" onChange={this.eventHandler} value={this.state.balconies} class="form-control" id="balconies" placeholder="balconies" />
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="Kitchen">Kitchen</label>
-			//                         <input type="number" name="Kitchen" onChange={this.eventHandler} value={this.state.Kitchen} class="form-control" id="Kitchen" placeholder="Kitchen" />
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="area">area</label>
-			//                         <input type="number" name="area" onChange={this.eventHandler} value={this.state.area} class="form-control" id="area" placeholder="area" />
-			//                     </div>
-
-			//                     <div class="form-group">
-			//                         <label for="parking">parking</label>
-			//                         <select name="parking" id="parking" onChange={this.eventHandler} value={this.state.parking} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="lift">lift</label>
-			//                         <select name="lift" id="lift" onChange={this.eventHandler} value={this.state.lift} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="swimming_pool">swimming_pool</label>
-			//                         <select name="swimming_pool" id="swimming_pool" onChange={this.eventHandler} value={this.state.swimming_pool} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="gym">gym</label>
-			//                         <select name="gym" id="gym" onChange={this.eventHandler} value={this.state.gym} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="gas_pipeline">gas_pipeline</label>
-			//                         <select name="gas_pipeline" id="gas_pipeline" onChange={this.eventHandler} value={this.state.gas_pipeline} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-
-			//                     <div class="form-group">
-			//                         <label for="">electricity_charge</label>
-			//                         <input type="number" name="electricity_charge" onChange={this.eventHandler} value={this.state.electricity_charge} class="form-control" id="electricity_charge" placeholder="electricity_charge" />
-			//                     </div>
-
-			//                     <div class="form-group">
-			//                         <label for="electricity_supply">electricity_supply</label>
-			//                         <select name="electricity_supply" id="electricity_supply" onChange={this.eventHandler} value={this.state.electricity_supply} >
-			//                             <option value="True">Available 24*7</option>
-			//                             <option value="False">Not available 24*7</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="Power_backup">Power_backup</label>
-			//                         <select name="Power_backup" id="Power_backup" onChange={this.eventHandler} value={this.state.Power_backup} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-
-			//                     <div class="form-group">
-			//                         <label for="">water_charge</label>
-			//                         <input type="number" name="water_charge" onChange={this.eventHandler} value={this.state.water_charge} class="form-control" id="water_charge" placeholder="water_charge" />
-			//                     </div>
-
-			//                     <div class="form-group">
-			//                         <label for="water_supply">water_supply</label>
-			//                         <select name="water_supply" id="water_supply" onChange={this.eventHandler} value={this.state.water_supply} >
-			//                             <option value="True">Available 24*7</option>
-			//                             <option value="False">Not available 24*7</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="water_purifier">water_purifier</label>
-			//                         <select name="water_purifier" id="water_purifier" onChange={this.eventHandler} value={this.state.water_purifier} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="fridge">fridge</label>
-			//                         <select name="fridge" id="fridge" onChange={this.eventHandler} value={this.state.fridge} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="washing_machine">washing_machine</label>
-			//                         <select name="washing_machine" id="washing_machine" onChange={this.eventHandler} value={this.state.washing_machine} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="CCTV">CCTV</label>
-			//                         <select name="CCTV" id="CCTV" onChange={this.eventHandler} value={this.state.CCTV} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="guard">guard</label>
-			//                         <select name="guard" id="guard" onChange={this.eventHandler} value={this.state.guard} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="medical">medical</label>
-			//                         <select name="medical" id="medical" onChange={this.eventHandler} value={this.state.medical} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="fire_alarme">fire_alarme</label>
-			//                         <select name="fire_alarme" id="fire_alarme" onChange={this.eventHandler} value={this.state.fire_alarme} >
-			//                             <option value="True">Available</option>
-			//                             <option value="False">Not available</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="cleaning">cleaning</label>
-			//                         <select name="cleaning" id="cleaning" onChange={this.eventHandler} value={this.state.cleaning} >
-			//                             <option value="No">No</option>
-			//                             <option value="Daily">Daily</option>
-			//                             <option value="Weekly">Weekly</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="furnished">furnished</label>
-			//                         <select name="furnished" id="furnished" onChange={this.eventHandler} value={this.state.furnished} >
-			//                             <option value="FullyFurnished">FullyFurnished</option>
-			//                             <option value="SemiFurnished">SemiFurnished</option>
-			//                             <option value="Unfurnished">Unfurnished</option>
-			//                         </select>
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="available_for">available_for</label>
-			//                         <select name="available_for" id="available_for" onChange={this.eventHandler} value={this.state.available_for} >
-			//                             <option value="Any">Any</option>
-			//                             <option value="Family">Family</option>
-			//                             <option value="Couple">Couple</option>
-			//                             <option value="Bachelor">Bachelor</option>
-			//                             <option value="Student">Student</option>
-			//                             <option value="GovernmentEmployee">Government Employee</option>
-			//                             <option value="Girl">Girl</option>
-			//                             <option value="Boy">Boy</option>
-			//                         </select>
-			//                     </div>
-			//  */}
-			//                     <div class="form-group">
-			//                         <label for="available_from">available_from</label>
-			//                         <input
-			//                             type="text"
-			//                             name="available_from"
-			//                             onChange={this.eventHandler}
-			//                             value={this.state.available_from}
-			//                             class="form-control"
-			//                             id="available_from"
-			//                             placeholder="available_from"
-			//                         />
-			//                     </div>
-
-			//                     <div class="form-group">
-			//                         <label for="rent">rent</label>
-			//                         <input
-			//                             type="number"
-			//                             name="rent"
-			//                             onChange={this.eventHandler}
-			//                             value={this.state.rent}
-			//                             class="form-control"
-			//                             id="rent"
-			//                             placeholder="rent"
-			//                         />
-			//                     </div>
-
-			//                     {/* <div class="form-group">
-			//                         <label for="additional_charge">additional_charge</label>
-			//                         <input type="number" name="additional_charge" onChange={this.eventHandler} value={this.state.additional_charge} class="form-control" id="additional_charge" placeholder="additional_charge" />
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="security_money">security_money</label>
-			//                         <input type="number" name="security_money" onChange={this.eventHandler} value={this.state.security_money} class="form-control" id="security_money" placeholder="security_money" />
-			//                     </div>
-
-			//                     <div class="form-group">
-			//                         <label for="locality">locality</label>
-			//                         <input type="text" name="locality" onChange={this.eventHandler} value={this.state.locality} class="form-control" id="locality" placeholder="locality" />
-			//                     </div> */}
-
-			//                     <div class="form-group">
-			//                         <label for="address">address</label>
-			//                         <input
-			//                             type="text"
-			//                             name="address"
-			//                             onChange={this.eventHandler}
-			//                             value={this.state.address}
-			//                             class="form-control"
-			//                             id="address"
-			//                             placeholder="address"
-			//                         />
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="city">city</label>
-			//                         <input
-			//                             type="text"
-			//                             name="city"
-			//                             onChange={this.eventHandler}
-			//                             value={this.state.city}
-			//                             class="form-control"
-			//                             id="city"
-			//                             placeholder="city"
-			//                         />
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="state">state</label>
-			//                         <input
-			//                             type="text"
-			//                             name="state"
-			//                             onChange={this.eventHandler}
-			//                             value={this.state.state}
-			//                             class="form-control"
-			//                             id="state"
-			//                             placeholder="state"
-			//                         />
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="pin">pin</label>
-			//                         <input
-			//                             type="number"
-			//                             name="pin"
-			//                             onChange={this.eventHandler}
-			//                             value={this.state.pin}
-			//                             class="form-control"
-			//                             id="pin"
-			//                             placeholder="pin"
-			//                         />
-			//                     </div>
-
-			//                     <div class="form-group">
-			//                         <label for="owner_name">owner_name</label>
-			//                         <input
-			//                             type="text"
-			//                             name="owner_name"
-			//                             onChange={this.eventHandler}
-			//                             value={this.state.owner_name}
-			//                             class="form-control"
-			//                             id="owner_name"
-			//                             placeholder="owner_name"
-			//                         />
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="owner_phone_no1">owner_phone_no1</label>
-			//                         <input
-			//                             type="text"
-			//                             name="owner_phone_no1"
-			//                             onChange={this.eventHandler}
-			//                             value={this.state.owner_phone_no1}
-			//                             class="form-control"
-			//                             id="owner_phone_no1"
-			//                             placeholder="owner_phone_no1"
-			//                         />
-			//                     </div>
-			//                     <div class="form-group">
-			//                         <label for="posted_by">posted_by</label>
-			//                         <select name="posted_by" id="posted_by" onChange={this.eventHandler} value={this.state.posted_by}>
-			//                             <option value="Owner">Owner</option>
-			//                             <option value="Agent">Agent</option>
-			//                         </select>
-			//                     </div>
-			//                 </form>
-
-			//                 <button class="btn btn-primary" onClick={this.submit}>
-			//                     Submit
-			//                 </button>
-			//             </div>
 		);
 	}
 }
