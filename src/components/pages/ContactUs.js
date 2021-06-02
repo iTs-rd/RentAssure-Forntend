@@ -48,7 +48,7 @@ class ContactUs extends Component {
 
     // Submit Form
     submitForm() {
-        fetch("http://127.0.0.1:8000/api/contact/", {
+        fetch(`${process.env.REACT_APP_API_URL}/api/contact/`, {
             method: "POST",
             body: JSON.stringify(this.state),
             headers: {
@@ -86,19 +86,19 @@ class ContactUs extends Component {
 
                                 <ul class="info">
                                     <li>
-                                        <i class="fa fa-road fa-2x"></i> 2252 Brooklyn Street
+                                        <i class="fa fa-road fa-2x"></i> Deoria
                                         <br />
-                                        Washington, USA
+                                        Uttar Pradesh, India
                                         <br />
-                                        92313
+                                        274001
                                     </li>
                                     <br />
                                     <li>
-                                        <i class="fa fa-envelope fa-2x"></i> lorem@ipsum.com
+                                        <i class="fa fa-envelope fa-2x"></i> contact@rentassure.com
                                     </li>
                                     <br />
                                     <li>
-                                        <i class="fa fa-phone fa-2x"></i> +918858896086
+                                        <i class="fa fa-phone fa-2x"></i> +91 885 8896 086
                                     </li>
                                 </ul>
                                 <ul class="sci">

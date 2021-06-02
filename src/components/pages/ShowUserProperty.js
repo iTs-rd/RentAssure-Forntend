@@ -35,17 +35,13 @@ function ShowUserProperty(props) {
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/api/datalist/?user=${userId}`, {
 			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				"start": -1,
-				"end": -1,
-			},
+			headers: {"Content-Type": "application/json",},
 		})
-			.then((resp) => resp.json())
-			.then((res) => {
-				setProperty(res);
-			})
-			.catch((error) => console.log(error));
+		.then((resp) => resp.json())
+		.then((res) => {
+			setProperty(res);
+		})
+		.catch((error) => console.log(error));
 	}, [userId]);
 
 	const logout = () => {
@@ -83,9 +79,22 @@ function ShowUserProperty(props) {
 			window.location.href = `/profile/properties/${item.id}`;
 		};
 
+		const PropertyDelete=()=>{
+			if(window.confirm("Are You sure you want to delete"))
+			{			
+				fetch(`${process.env.REACT_APP_API_URL}/api/data/${item.id}/`,{
+					method:'DELETE',
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": `Token ${token["auth"]}`,
+					},
+				}).then(window.location.reload()).catch(err=>console.log(err))
+			}
+		};
+
 		return (
 			<div className="carditem row">
-				<div className="col-12 col-md-4" style={{ padding: "0" }} onClick={PropertyDetail}>
+				<div className="col-12 col-md-4" style={{ padding: "0" }}>
 					<MyCard img1={item.img1} img2={item.img2} img3={item.img3} img4={item.img4} />
 				</div>
 				<div className="col-12 col-md-8 row content">
@@ -94,8 +103,11 @@ function ShowUserProperty(props) {
 							{item.title}
 						</div>
 						<div>
-							<button type="button" onClick={PropertyDetail} class="btn btn-info rounded">
+							<button type="button" onClick={PropertyDetail} class="btn btn-info rounded mr-1">
 								edit
+							</button>
+							<button type="button" onClick={PropertyDelete} class="btn btn-danger rounded ml-1">
+								delete
 							</button>
 						</div>
 					</div>

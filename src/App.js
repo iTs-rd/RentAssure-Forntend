@@ -10,7 +10,7 @@ import Flat from "./components/pages/Flat";
 import Room from "./components/pages/Room";
 import ContactUs from "./components/pages/ContactUs";
 import AboutUs from "./components/pages/Aboutus";
-import Navbar from "./components/pages/Navbar";
+import Navbar from "./components/pages/navbar";
 import Login from "./components/pages/Login";
 import Profile from "./components/pages/Profile";
 import SignUp from "./components/pages/SignUp";

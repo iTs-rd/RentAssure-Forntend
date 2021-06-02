@@ -88,7 +88,7 @@ function AboutUs() {
 								</div>
 								<ul className="social-media">
 									<li>
-										<a href="https://www.facebook.com/smart.abhi.148553">
+										<a href="https://www.facebook.com/profile.php?id=100009723558349">
 											<i class="fab fa-facebook-f"></i>
 										</a>
 									</li>
