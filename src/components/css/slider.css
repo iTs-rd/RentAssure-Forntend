@@ -10,8 +10,6 @@
 
 /* Setting size of the image */
 .carousel-inner > .carousel-item > img {
-    /* margin-left: 15px;
-    margin-right: 15px; */
     height: 740px;
 }
 .carousel-indicators li {

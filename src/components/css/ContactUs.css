@@ -9,22 +9,12 @@ section {
     align-items: center;
     top: -15px;
     font-family: "Work Sans", sans-serif;
-    /* background: #5433ff; 
-    background: -webkit-linear-gradient(to right, #a5fecb, #20bdff, #5433ff); 
-    background: linear-gradient(to right, #a5fecb, #20bdff, #5433ff);  */
-    background: #36D1DC;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: #36D1DC;
+    background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
+    background: linear-gradient(to right, #5B86E5, #36D1DC);
 }
 
-/* body {
-    background: #3952a3;
-    color: #485e74;
-    line-height: 1.6;
-    font-family: "Yantramanav", sans-serif;
-    padding: 1em;
-} */
+
 
 .container {
     max-width: 1170px;
@@ -67,7 +57,6 @@ ul {
 /* ------------------- */
 
 .contact-info {
-    /* background: #c3c9dd; */
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     background: #0f3959;
@@ -76,7 +65,6 @@ ul {
 section .container .contact-info h2,
 section .container .contact-info ul {
     color: white;
-    /* font-size: 12px; */
     font-weight: 500;
     font-family: "Open Sans", sans-serif;
     text-align: center;
@@ -85,7 +73,6 @@ section .container .contact-info ul {
 
 section .container .wrapper .contact-info .info li {
     list-style: none;
-    /* color: white; */
     display: flex;
     margin: 15px 0;
     cursor: pointer;
