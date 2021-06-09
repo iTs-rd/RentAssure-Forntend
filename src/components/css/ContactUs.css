@@ -241,3 +241,6 @@ section .container .wrapper .contact-info .sci li:hover a ion-icon {
         color: rgb(12, 12, 12);
     }
 }
+.contact-info li{
+    color: rgba(0,0,0,1);
+}
