@@ -17,7 +17,6 @@
 
 .row .text {
 	background-color: white;
-	/* box-shadow: 13px 13px 8px #333; */
 }
 .block1 {
 	margin-top: 20px;
@@ -33,7 +32,6 @@
 
 .row .text p {
 	line-height: 1.2;
-	/* text-indent: 30px; */
 	margin: 10px 30px;
 	font-size: large;
 	letter-spacing: 1.04px;
@@ -48,12 +46,10 @@
 }
 .heading {
 	font-size: 50px;
-	/* filter: invert(); */
 	opacity: 0.6;
 }
 
 .team {
-	/* margin-bottom: 10px; */
 	display: grid;
 }
 .team .container {
@@ -178,20 +174,14 @@
 
 .team .one .container {
 	position: relative;
-	/* margin-bottom: 10px;
-     margin-left: 200px; */
 }
 .team .two .container {
 	position: relative;
-	/* margin-bottom: 10px;
-    margin-left: 600px; */
 }
 .team .three .container {
 	justify-content: right;
 	position: relative;
 	padding-bottom: 2px;
-	/* margin-bottom: 10px;
-    margin-left: 1000px; */
 }
 .team .one .user-info {
 	height: 75px;

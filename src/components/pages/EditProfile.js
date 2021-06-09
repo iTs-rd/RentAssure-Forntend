@@ -137,7 +137,6 @@ class EditProfile extends Component {
 									</Row>
 									<Row>
 										<Col md={6}>
-											{/* //user name age gender */}
 											<Form.Group controlId="username">
 												<Form.Label className="font-weight-bolder">3 . User Name</Form.Label>
 												<Form.Control
@@ -236,39 +235,7 @@ class EditProfile extends Component {
 					</Row>
 				</Row>
 
-				{/*
-				<form id="profile-form">
-
-					<div class="form-group">
-						<label for="">mobile</label>
-						<input
-							type="text"
-							name="mobile"
-							onChange={this.eventHandler}
-							value={this.state.mobile}
-							class="form-control"
-							id="mobile"
-							placeholder="mobile"
-						/>
-					</div>
-					<div class="form-group">
-						<label for="">email</label>
-						<input type="text" name="email" value={this.state.email} class="form-control" id="email" placeholder="email" disabled />
-					</div>
-
-
-					<div class="form-group">
-						<img src={this.state.dp} alt="dp" />
-						<div class="form-group">
-							<label for="dp">Profile Photo</label>
-							<input type="file" name="dp" class="form-control-file" id="dp" onChange={this.eventHandler} />
-						</div>
-					</div>
-				</form>
-				<br />
-				<button onClick={this.submit} type="button" class="btn btn-primary">
-					Submit
-				</button> */}
+				
 			</React.Fragment>
 		);
 	}

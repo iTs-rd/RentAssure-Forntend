@@ -3,7 +3,6 @@ import "../css/profile.css";
 import { useCookies } from "react-cookie";
 import { Row, Col, Card, Button, ListGroup, Toast } from "react-bootstrap";
 import EditProfile from "./EditProfile";
-// import Show from "./contactOwner";
 
 function Profile() {
 	const [token, setToken] = useCookies(["auth"]);
@@ -103,13 +102,10 @@ function Profile() {
 													<strong className="mr-auto">Owner/Agent</strong>
 												</Toast.Header>
 												<Toast.Body>
-													<ListGroup.Item>
-														<i class="fas fa-at"></i>
-													</ListGroup.Item>
+													<i className="fas fa-at mx-2"></i>
 													<strong>{user.email}</strong>
-													<ListGroup.Item className="my-1">
-														<i class="fas fa-mobile-alt"></i>
-													</ListGroup.Item>
+													<br />
+													<i className="fas fa-mobile-alt mx-2"></i>
 													{user.mobile}
 												</Toast.Body>
 											</Toast>

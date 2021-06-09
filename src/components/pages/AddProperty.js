@@ -93,12 +93,6 @@ class AddProperty extends Component {
 		});
 	}
 
-	// toggleChange = (event) => {
-	// 	this.setState({
-	// 		parking: !this.state.parking,
-	// 	});
-	// };
-
 	logout = () => {
 		document.cookie = "auth=" + this.state.token + ";max-age=0";
 		window.location.reload();
@@ -125,8 +119,6 @@ class AddProperty extends Component {
 			});
 		// .catch( error => console.log(error))
 	};
-
-	// about1 = ['bedroom', 'bathroom','kitchen','balconies','area']
 
 	render() {
 		return (
@@ -526,7 +518,6 @@ class AddProperty extends Component {
 						</Col>
 					</Row>
 					<Row className="my-3">
-						{/* fridge, washing_machine, cctv guard */}
 						<Col md={3}>
 							<Form.Row>
 								<h5>Fridge</h5>
@@ -601,7 +592,6 @@ class AddProperty extends Component {
 						</Col>
 					</Row>
 					<Row className="my-3">
-						{/* Emergency Medical Facilty, Fire Alarm */}
 						<Col md={3}>
 							<Form.Row>
 								<h5>Medical Facilty</h5>
@@ -806,7 +796,6 @@ class AddProperty extends Component {
 					<br />
 					<br />
 					<Row className="my-3">
-						{/* one time charge, agreement dureationa */}
 						<Col md={6}>
 							<Form.Group>
 								<Row>
@@ -853,7 +842,6 @@ class AddProperty extends Component {
 						</Col>
 					</Row>
 					<Row className="my-3">
-						{/* one time charge, agreement dureationa */}
 						<Col md={4}>
 							<Form.Group>
 								<Row>
