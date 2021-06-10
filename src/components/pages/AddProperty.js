@@ -102,7 +102,7 @@ class AddProperty extends Component {
 		var frm = document.getElementById("property-form");
 		var formdata = new FormData(frm);
 		formdata.append("user", this.state.user);
-		fetch(`${process.env.REACT_APP_API_URL}/api/data/`, {
+		fetch(`${process.env.REACT_APP_API_URL}/api/data/   `, {
 			method: "POST",
 			headers: {
 				"Authorization": `Token ${this.state.token}`,

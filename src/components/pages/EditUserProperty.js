@@ -154,10 +154,11 @@ class EditUserProperty extends Component {
 			.catch((error) => console.log(error));
 	}
 	submit = () => {
-		var frm = document.getElementById("product-form");
+		var frm = document.getElementById("property-form");
 		var formdata = new FormData(frm);
+		console.log(typeof(this.state.user))
 		formdata.append("user", this.state.user);
-		fetch(`${process.env.REACT_APP_API_URL}/api/data/${this.props.id}/   `, {
+		fetch(`${process.env.REACT_APP_API_URL}/api/data/${this.props.id}/`, {
 			method: "PUT",
 			headers: {
 				"Authorization": `Token ${this.state.token}`,
@@ -424,7 +425,7 @@ class EditUserProperty extends Component {
 							<Form.Row>
 								<h5>Parking</h5>
 								<Form.Check>
-									{console.log(this.state.parking)}
+									{/* {console.log(this.state.parking)} */}
 									<input
 										name="parking"
 										defaultChecked={this.state.parking}
@@ -436,7 +437,7 @@ class EditUserProperty extends Component {
 											});
 										}}
 									/>
-									{console.log(this.state.parking)}
+									{/* {console.log(this.state.parking)} */}
 								</Form.Check>
 							</Form.Row>
 						</Col>
