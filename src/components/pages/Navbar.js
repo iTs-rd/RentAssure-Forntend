@@ -4,7 +4,7 @@ import logo from "../assets/images/logo.png";
 import "../css/navbar.css";
 
 function Navbar() {
-	const [token, setToken] = useCookies(["auth"]);
+	const [token] = useCookies(["auth"]);
 	const [name, setName] = useState("");
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/api/viewuser/`, {
@@ -22,7 +22,7 @@ function Navbar() {
 				}
 			})
 			.catch((error) => console.log(error));
-	}, []);
+	}, [token]);
 
 	function NavItem() {
 		return (
@@ -92,7 +92,7 @@ function Navbar() {
 				</div>
 			</nav>
 			<div id="navbar-model" className="modal fade " role="dialog">
-				<div className="modal-dialog modal-lg" role="content">
+				<div className="modal-dialog modal-lg">
 					<div className="modal-content">
 						<div className="modal-body">{NavItem()}</div>
 					</div>

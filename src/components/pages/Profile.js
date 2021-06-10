@@ -5,14 +5,14 @@ import { Row, Col, Card, Button, ListGroup, Toast } from "react-bootstrap";
 import EditProfile from "./EditProfile";
 
 function Profile() {
-	const [token, setToken] = useCookies(["auth"]);
+	const [token] = useCookies(["auth"]);
 	const [user, setUser] = useState(null);
 	const [mode, SetMode] = useState(0);
 	const [show, setShow] = useState(false);
 
 	useEffect(() => {
 		if (!token["auth"]) window.location.href = "/login";
-	}, []);
+	}, [token]);
 
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/api/viewuser/`, {
@@ -31,7 +31,7 @@ function Profile() {
 				} else window.location.href = "/login";
 			})
 			.catch((error) => console.log(error));
-	}, []);
+	}, [token]);
 
 	function ChangeMode() {
 		SetMode(!mode);

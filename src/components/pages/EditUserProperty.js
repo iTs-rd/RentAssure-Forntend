@@ -74,12 +74,6 @@ class EditUserProperty extends Component {
 			[event.target.id]: event.target.files[0],
 		});
 	};
-	// fileSelectHandler(event) {
-	//     this.setState({
-	//         // console.log(event.target.files[0]);
-	//         [event.target.name]: event.target.files[0],
-	//     });
-	// }
 
 	logout = () => {
 		document.cookie = "auth=" + this.state.token + ";max-age=0";
@@ -308,7 +302,7 @@ class EditUserProperty extends Component {
 					<Form.Row>
 						<Col md={3}>
 							<Form.Group>
-								<img src={this.state.img1} alt="No Image Here" className="boder border-dark border-top border-left" />
+								<img src={this.state.img1} alt="First" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img1">
 										<h6>Image 1*</h6>
@@ -319,7 +313,7 @@ class EditUserProperty extends Component {
 						</Col>
 						<Col md={3}>
 							<Form.Group>
-								<img src={this.state.img2} alt="No Image Here" className="boder border-dark border-top border-left" />
+								<img src={this.state.img2} alt="Second" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img2">
 										<h6>Image 2*</h6>
@@ -330,7 +324,7 @@ class EditUserProperty extends Component {
 						</Col>
 						<Col md={3}>
 							<Form.Group>
-								<img src={this.state.img3} alt="No Image Here" className="boder border-dark border-top border-left" />
+								<img src={this.state.img3} alt="Third" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img3">
 										<h6>Image 3</h6>
@@ -341,7 +335,7 @@ class EditUserProperty extends Component {
 						</Col>
 						<Col md={3}>
 							<Form.Group>
-								<img src={this.state.img4} alt="No Image Here" className="boder border-dark border-top border-left" />
+								<img src={this.state.img4} alt="Four" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img4">
 										<h6>Image 4</h6>

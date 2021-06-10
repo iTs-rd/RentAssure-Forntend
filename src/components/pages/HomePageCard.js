@@ -4,8 +4,6 @@ import "../css/homepage.css";
 import $ from "jquery";
 
 function HomePageCard(props) {
-	var start = 0;
-	var end = 10;
 	const [properties, setProperty] = useState([]);
 	useEffect(() => {
 		var y = props.filterValues;
@@ -38,11 +36,6 @@ function HomePageCard(props) {
 
 		fetch(`${process.env.REACT_APP_API_URL}/api/datalist/${filter}`, {
 			method: "GET",
-			headers: {
-				"Content-Type": "application/json",
-				"start": start,
-				"end": end,
-			},
 		})
 			.then((resp) => resp.json())
 			.then((res) => setProperty(res))
@@ -54,7 +47,7 @@ function HomePageCard(props) {
 		var doAnimations = function () {
 			var offset = $(window).scrollTop() + $(window).height(),
 				$animatables = $(".animatable");
-			if ($animatables.length == 0) {
+			if ($animatables.length === 0) {
 				$(window).off("scroll", doAnimations);
 			}
 			$animatables.each(function (i) {

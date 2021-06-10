@@ -6,7 +6,7 @@ import MyCard from "./MyCard";
 import React from "react";
 
 function ShowUserProperty(props) {
-	const [token, setToken] = useCookies(["auth"]);
+	const [token] = useCookies(["auth"]);
 	const [userId, setUserId] = useState(null);
 	const [properties, setProperty] = useState([]);
 

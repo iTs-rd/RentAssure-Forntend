@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import render from "react-dom";
 import { withCookies } from "react-cookie";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import editUserBg from "../assets/images/edituserBG.jpg";
