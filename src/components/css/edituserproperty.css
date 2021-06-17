@@ -1,0 +1,11 @@
+.editUserPropertyBG {
+	position: absolute;
+	background-color: black;
+	height: 540px;
+	z-index: 2;
+	top: 1300px;
+	width: 1509px;
+	opacity: 0.2;
+	margin-left: -8px;
+	border-radius: 1rem;
+}

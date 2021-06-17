@@ -32,7 +32,7 @@ function App() {
 					if (res.detail === "Not found.") window.location.href = "/";
 				})
 				.catch((err) => console.log(err));
-		}, []);
+		}, [match.params.productId]);
 		if (properties === null) return <div />;
 		if (properties.property_type === "House") return <House item={properties} />;
 		if (properties.property_type === "Room") return <Room item={properties} />;

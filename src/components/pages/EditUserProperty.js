@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { withCookies } from "react-cookie";
 import { Form, Row, Col, Button } from "react-bootstrap";
+import "../css/edituserproperty.css";
 
 class EditUserProperty extends Component {
 	constructor(props) {
@@ -74,12 +75,6 @@ class EditUserProperty extends Component {
 			[event.target.id]: event.target.files[0],
 		});
 	};
-	// fileSelectHandler(event) {
-	//     this.setState({
-	//         // console.log(event.target.files[0]);
-	//         [event.target.name]: event.target.files[0],
-	//     });
-	// }
 
 	logout = () => {
 		document.cookie = "auth=" + this.state.token + ";max-age=0";
@@ -154,10 +149,11 @@ class EditUserProperty extends Component {
 			.catch((error) => console.log(error));
 	}
 	submit = () => {
-		var frm = document.getElementById("product-form");
+		var frm = document.getElementById("property-form");
 		var formdata = new FormData(frm);
+		console.log(typeof this.state.user);
 		formdata.append("user", this.state.user);
-		fetch(`${process.env.REACT_APP_API_URL}/api/data/${this.props.id}/   `, {
+		fetch(`${process.env.REACT_APP_API_URL}/api/data/${this.props.id}/`, {
 			method: "PUT",
 			headers: {
 				"Authorization": `Token ${this.state.token}`,
@@ -188,6 +184,7 @@ class EditUserProperty extends Component {
 								onChange={this.eventHandler}
 								value={this.state.property_type}
 								id="property_type"
+								className="border rounded"
 								defaultValue="Choose..."
 							>
 								<option value="Choose..." disabled>
@@ -307,7 +304,7 @@ class EditUserProperty extends Component {
 					<Form.Row>
 						<Col md={3}>
 							<Form.Group>
-								<img src={this.state.img1} alt="No Image Here" className="boder border-dark border-top border-left" />
+								<img src={this.state.img1} alt="First" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img1">
 										<h6>Image 1*</h6>
@@ -318,7 +315,7 @@ class EditUserProperty extends Component {
 						</Col>
 						<Col md={3}>
 							<Form.Group>
-								<img src={this.state.img2} alt="No Image Here" className="boder border-dark border-top border-left" />
+								<img src={this.state.img2} alt="Second" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img2">
 										<h6>Image 2*</h6>
@@ -329,7 +326,7 @@ class EditUserProperty extends Component {
 						</Col>
 						<Col md={3}>
 							<Form.Group>
-								<img src={this.state.img3} alt="No Image Here" className="boder border-dark border-top border-left" />
+								<img src={this.state.img3} alt="Third" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img3">
 										<h6>Image 3</h6>
@@ -340,7 +337,7 @@ class EditUserProperty extends Component {
 						</Col>
 						<Col md={3}>
 							<Form.Group>
-								<img src={this.state.img4} alt="No Image Here" className="boder border-dark border-top border-left" />
+								<img src={this.state.img4} alt="Four" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img4">
 										<h6>Image 4</h6>
@@ -418,13 +415,14 @@ class EditUserProperty extends Component {
 					</Form.Row>
 
 					<h3 className="my-4">Other Facilities</h3>
+					<div class="editUserPropertyBG"></div>
 
 					<Row className="my-3">
 						<Col md={3}>
 							<Form.Row>
 								<h5>Parking</h5>
 								<Form.Check>
-									{console.log(this.state.parking)}
+									{/* {console.log(this.state.parking)} */}
 									<input
 										name="parking"
 										defaultChecked={this.state.parking}
@@ -436,7 +434,7 @@ class EditUserProperty extends Component {
 											});
 										}}
 									/>
-									{console.log(this.state.parking)}
+									{/* {console.log(this.state.parking)} */}
 								</Form.Check>
 							</Form.Row>
 						</Col>
@@ -714,7 +712,6 @@ class EditUserProperty extends Component {
 						</Col>
 					</Row>
 					<br />
-					<br />
 					<Row className="my-3">
 						<Col md={3}>
 							<Form.Row>
@@ -848,7 +845,6 @@ class EditUserProperty extends Component {
 							</Form.Group>
 						</Col>
 					</Row>
-					<br />
 					<br />
 					<Row className="my-3">
 						{/* one time charge, agreement dureationa */}

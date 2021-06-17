@@ -1,0 +1,11 @@
+.addPropertyBG {
+	position: absolute;
+	background-color: black;
+	height: 580px;
+	z-index: 2;
+	top: 1030px;
+	width: 1500px;
+	opacity: 0.2;
+	margin-left: -8px;
+	border-radius: 1rem;
+}

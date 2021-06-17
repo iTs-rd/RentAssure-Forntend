@@ -50,7 +50,7 @@ class Room extends React.Component {
 				<div className="col py-4 my-2">
 					<Row>
 						<Card>
-							<h5 className="mx-1">PROPERTY TYPE - {this.props.item.property_type}</h5>
+							<h5 className="mx-1 ">PROPERTY TYPE - {this.props.item.property_type}</h5>
 							<h3>
 								{this.props.item.title} - {this.props.item.area}sq.ft
 							</h3>

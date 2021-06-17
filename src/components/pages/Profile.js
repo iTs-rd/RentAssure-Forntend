@@ -5,14 +5,14 @@ import { Row, Col, Card, Button, ListGroup, Toast } from "react-bootstrap";
 import EditProfile from "./EditProfile";
 
 function Profile() {
-	const [token, setToken] = useCookies(["auth"]);
+	const [token] = useCookies(["auth"]);
 	const [user, setUser] = useState(null);
 	const [mode, SetMode] = useState(0);
 	const [show, setShow] = useState(false);
 
 	useEffect(() => {
 		if (!token["auth"]) window.location.href = "/login";
-	}, []);
+	}, [token]);
 
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/api/viewuser/`, {
@@ -31,7 +31,7 @@ function Profile() {
 				} else window.location.href = "/login";
 			})
 			.catch((error) => console.log(error));
-	}, []);
+	}, [token]);
 
 	function ChangeMode() {
 		SetMode(!mode);
@@ -73,24 +73,36 @@ function Profile() {
 								</Button>
 							</Card>
 						</Col>
-						<Col md={{ span: 5, offset: 2 }} className="my-3">
+						<Col md={{ span: 5, offset: 2 }} className="my-3 text-center">
 							<Row>
 								<Col md={{ span: 3 }} className="my-2 mx-5" id="firstList">
 									<ListGroup variant="flush">
-										<ListGroup.Item className="my-3 border-left border-dark  rounded-top rounded-right">First Name</ListGroup.Item>
-										<ListGroup.Item className="my-3 border-left border-dark rounded-top rounded-right">Last Name</ListGroup.Item>
-										<ListGroup.Item className="my-3 border-left border-dark rounded-top rounded-right">Handle</ListGroup.Item>
-										<ListGroup.Item className="my-3 border-left border-dark rounded-top rounded-right">Age</ListGroup.Item>
-										<ListGroup.Item className="my-3 border-left border-bottom border-dark rounded-top rounded-right">Gender</ListGroup.Item>
+										<ListGroup.Item className="my-3 px-2 border-left border-dark  rounded-top rounded-right">First Name</ListGroup.Item>
+										<ListGroup.Item className="my-3 px-2 border-left border-dark rounded-top rounded-right">Last Name</ListGroup.Item>
+										<ListGroup.Item className="my-3 px-3 border-left border-dark rounded-top rounded-right">Handle</ListGroup.Item>
+										<ListGroup.Item className="my-3 px-3 border-left border-dark rounded-top rounded-right">Age</ListGroup.Item>
+										<ListGroup.Item className="my-3 px-3 border-left border-bottom border-dark rounded-top rounded-right">Gender</ListGroup.Item>
 									</ListGroup>
 								</Col>
 								<Col md={{ span: 4 }} className="my-2 mx-5 ">
 									<ListGroup variant="flush" className="mx-2">
-										<ListGroup.Item className="my-3 border-right rounded-pill Info text-capitalize">{user.firstname}</ListGroup.Item>
-										<ListGroup.Item className="my-3 border-right rounded-pill Info text-capitalize">{user.lastname}</ListGroup.Item>
-										<ListGroup.Item className="my-3 border-right rounded-pill Info">{user.username}</ListGroup.Item>
-										<ListGroup.Item className="my-3 border-right rounded-pill Info">{user.age}</ListGroup.Item>
-										<ListGroup.Item className="my-3 border-right border rounded-pill  Info">{user.gender}</ListGroup.Item>
+										<ListGroup.Item className="my-3 border-right rounded-pill Info text-capitalize" placeholder="Not Available">
+											{user.firstname}
+										</ListGroup.Item>
+
+										<ListGroup.Item className="my-3 border-right rounded-pill Info text-capitalize" placeholder="Not Available">
+											{user.lastname}
+										</ListGroup.Item>
+
+										<ListGroup.Item className="my-3 border-right rounded-pill Info" placeholder="Not Available">
+											{user.username}
+										</ListGroup.Item>
+										<ListGroup.Item className="my-3 border-right rounded-pill Info" placeholder="Not Available">
+											{user.age}
+										</ListGroup.Item>
+										<ListGroup.Item className="my-3 border-right border rounded-pill  Info" placeholder="Not Available">
+											{user.gender}
+										</ListGroup.Item>
 									</ListGroup>
 								</Col>
 								<div>
