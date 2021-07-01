@@ -74,33 +74,33 @@ function Profile() {
 							</Card>
 						</Col>
 						<Col md={{ span: 5, offset: 2 }} className="my-3 text-center">
-							<Row>
-								<Col md={{ span: 3 }} className="my-2 mx-5" id="firstList">
+							<Row className="d-flex justify-content-around">
+								<Col md={{ span: 3 }} className="my-2 " id="firstList">
 									<ListGroup variant="flush">
-										<ListGroup.Item className="my-3 px-2 border-left border-dark  rounded-top rounded-right">First Name</ListGroup.Item>
-										<ListGroup.Item className="my-3 px-2 border-left border-dark rounded-top rounded-right">Last Name</ListGroup.Item>
-										<ListGroup.Item className="my-3 px-3 border-left border-dark rounded-top rounded-right">Handle</ListGroup.Item>
-										<ListGroup.Item className="my-3 px-3 border-left border-dark rounded-top rounded-right">Age</ListGroup.Item>
-										<ListGroup.Item className="my-3 px-3 border-left border-bottom border-dark rounded-top rounded-right">Gender</ListGroup.Item>
+										<ListGroup.Item style={{width:'13vw'}} className="my-3 px-2 border-left border-dark  rounded-top rounded-right">First Name</ListGroup.Item>
+										<ListGroup.Item style={{width:'13vw'}} className="my-3 px-2 border-left border-dark rounded-top rounded-right">Last Name</ListGroup.Item>
+										<ListGroup.Item style={{width:'13vw'}} className="my-3 px-3 border-left border-dark rounded-top rounded-right">Handle</ListGroup.Item>
+										<ListGroup.Item style={{width:'13vw'}} className="my-3 px-3 border-left border-dark rounded-top rounded-right">Age</ListGroup.Item>
+										<ListGroup.Item style={{width:'13vw'}} className="my-3 px-3 border-left border-bottom border-dark rounded-top rounded-right">Gender</ListGroup.Item>
 									</ListGroup>
 								</Col>
-								<Col md={{ span: 4 }} className="my-2 mx-5 ">
+								<Col md={{ span: 4 }} className="my-2  ">
 									<ListGroup variant="flush" className="mx-2">
-										<ListGroup.Item className="my-3 border-right rounded-pill Info text-capitalize" placeholder="Not Available">
+										<ListGroup.Item style={{width:'13vw'}} className="my-3 border-right rounded-pill Info text-capitalize" placeholder="Not Available">
 											{user.firstname}
 										</ListGroup.Item>
 
-										<ListGroup.Item className="my-3 border-right rounded-pill Info text-capitalize" placeholder="Not Available">
+										<ListGroup.Item style={{width:'13vw'}} className="my-3 border-right rounded-pill Info text-capitalize" placeholder="Not Available">
 											{user.lastname}
 										</ListGroup.Item>
 
-										<ListGroup.Item className="my-3 border-right rounded-pill Info" placeholder="Not Available">
+										<ListGroup.Item style={{width:'13vw'}} className="my-3 border-right rounded-pill Info" placeholder="Not Available">
 											{user.username}
 										</ListGroup.Item>
-										<ListGroup.Item className="my-3 border-right rounded-pill Info" placeholder="Not Available">
+										<ListGroup.Item style={{width:'13vw'}} className="my-3 border-right rounded-pill Info" placeholder="Not Available">
 											{user.age}
 										</ListGroup.Item>
-										<ListGroup.Item className="my-3 border-right border rounded-pill  Info" placeholder="Not Available">
+										<ListGroup.Item style={{width:'13vw'}} className="my-3 border-right border rounded-pill  Info" placeholder="Not Available">
 											{user.gender}
 										</ListGroup.Item>
 									</ListGroup>
