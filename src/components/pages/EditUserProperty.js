@@ -309,7 +309,7 @@ class EditUserProperty extends Component {
 									<label for="img1">
 										<h6>Image 1*</h6>
 									</label>
-									<input type="file" name="img1" class="form-control-file" id="img1" onChange={this.eventHandler} required />
+									<input type="file" name="img1" class="form-control-file" id="img1"   />
 								</Form.Group>
 							</Form.Group>
 						</Col>
@@ -320,7 +320,7 @@ class EditUserProperty extends Component {
 									<label for="img2">
 										<h6>Image 2*</h6>
 									</label>
-									<input type="file" name="img2" class="form-control-file" id="img2" onChange={this.eventHandler} required />
+									<input type="file" name="img2" class="form-control-file" id="img2"   />
 								</Form.Group>
 							</Form.Group>
 						</Col>
@@ -331,7 +331,7 @@ class EditUserProperty extends Component {
 									<label for="img3">
 										<h6>Image 3</h6>
 									</label>
-									<input type="file" name="img3" class="form-control-file" id="img3" onChange={this.eventHandler} />
+									<input type="file" name="img3" class="form-control-file" id="img3"  />
 								</Form.Group>
 							</Form.Group>
 						</Col>
@@ -342,7 +342,7 @@ class EditUserProperty extends Component {
 									<label for="img4">
 										<h6>Image 4</h6>
 									</label>
-									<input type="file" name="img4" class="form-control-file" id="img4" onChange={this.eventHandler} />
+									<input type="file" name="img4" class="form-control-file" id="img4"  />
 								</Form.Group>
 							</Form.Group>
 						</Col>
