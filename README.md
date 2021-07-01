@@ -1,70 +1,66 @@
-# Getting Started with Create React App
+# RentAssure
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"> <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=green"> <img src="https://img.shields.io/badge/DJANGO-REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray"> <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white">
 
-## Available Scripts
+This project was build with the help of [React](https://reactjs.org) ,[Django](https://www.djangoproject.com/start/) & [Djano REST framework](https://www.django-rest-framework.org/).
 
-In the project directory, you can run:
+<a href="https://rentassure.herokuapp.com/"><img src="https://i.ibb.co/5L6QMyc/Screenshot-2021-07-01-at-20-14-45-Rent-Assure.png" />
 
-### `yarn start`
+## Some More Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Login & Signup
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img src="https://i.ibb.co/bmnmjq4/Screenshot-2021-07-01-at-21-12-01-Rent-Assure.png" />
 
-### `yarn test`
+<img src="https://i.ibb.co/52PPvnm/Screenshot-2021-07-01-at-21-19-54-Rent-Assure.png" width="950" />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### About & ContactUs
 
-### `yarn build`
+<img src="https://i.ibb.co/74XhdFF/Screenshot-2021-07-01-at-21-11-18-Rent-Assure.png" />
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="https://i.ibb.co/NY6dHzW/Screenshot-2021-07-01-at-21-11-40-Rent-Assure.png" />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Other
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="https://i.ibb.co/W2qnGLG/other.jpg" />
 
-### `yarn eject`
+</a>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Pre-requisites
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Your machine should have NPM and Node installed. A full guide for installing each of these is given below.
+Before you install any packages, ensure your package list is up to date with:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    sudo apt-get update
 
-## Learn More
+#### Install yarn
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    sudo apt-get install -y npm
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Install node
 
-### Code Splitting
+    sudo npm cache clean -f
+    sudo npm install -g n
+    sudo n stable
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Local setup
 
-### Analyzing the Bundle Size
+#### Clone the repo
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    git clone https://github.com/iTs-rd/RentAssure-Forntend.git
 
-### Making a Progressive Web App
+#### Install node modules
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    npm install
 
-### Advanced Configuration
+#### Running the server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+    npm start
 
-### Deployment
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The app is running live at [https://rentassure.herokuapp.com](https://rentassure.herokuapp.com). Patience recommended while opening:stuck_out_tongue_closed_eyes:
 
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Made in :heart: with Github & ReactJS.
