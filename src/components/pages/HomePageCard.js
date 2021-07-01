@@ -67,13 +67,13 @@ function HomePageCard(props) {
 		};
 
 		return (
-			<div className="carditem row animatable bounceIn ">
+			<div className="carditem row animatable bounceIn " onClick={PropertyDetails}>
 				<div className="col-12 col-md-4" style={{ padding: "0" }}>
 					<MyCard img1={item.img1} img2={item.img2} img3={item.img3} img4={item.img4} />
 				</div>
 				<div className="col-12 col-md-8 row content">
 					<div className="col-12 d-flex justify-content-between">
-						<div className="title bold" onClick={PropertyDetails}>
+						<div className="title bold" >
 							{item.title}
 						</div>
 						<div>

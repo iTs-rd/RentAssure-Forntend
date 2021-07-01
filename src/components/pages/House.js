@@ -34,23 +34,23 @@ class House extends React.Component {
 	render() {
 		const { products, index } = this.state;
 		return (
-			<div className="row">
-				<div className="col-md-7 room ">
+			<div className="row py-4">
+				<div className="col-12 col-md-6 room ">
 					{products.map((item) => (
-						<div className="details" key={item._id}>
-							<div className="box">
+						<div className="details d-flex justify-content-around row mr-0 pr-0" key={item._id}>
+							<div className="col-2 col-md-1 box m-0 p-0">
 								<DetailsThumb images={item.src} tab={this.handleTab} myRef={this.myRef} />
 							</div>
-							<div className="big-img ">
-								<img src={item.src[index]} className="border border-white rounded" alt="" />
-							</div>
+							<div className="col-9 col-md-10 big-img m-0 ml-1 p-0 ">
+								<img src={item.src[index]} className="" alt="" />
+							</div	>
 						</div>
 					))}
 				</div>
-				<div className="col py-4 my-2">
-					<Row>
-						<Card>
-							<h5 className="mx-1">PROPERTY TYPE - {this.props.item.property_type}</h5>
+				<div className="col-12 col-md-6">
+					<Row classname="p-2">
+						<Card classname="p-2">
+							{/* <h5 className="mx-1">PROPERTY TYPE - {this.props.item.property_type}</h5> */}
 							<h3>
 								{this.props.item.title} - {this.props.item.area}sq.ft
 							</h3>
@@ -62,7 +62,7 @@ class House extends React.Component {
 									{this.props.item.pin}
 									<h4 className=" py-1">Rent - ₹ {this.props.item.rent}</h4>
 								</Col>
-								<Col className={{ span: 2, offset: 5 }}>
+								<Col className={{ span: 2 }}>
 									<Toast
 										onClose={() => {
 											this.setState({ show: false });
@@ -86,7 +86,7 @@ class House extends React.Component {
 									</Toast>
 									<Button
 										variant="success"
-										className="mx-5 my-2 block-example border border-0 border-dark rounded"
+										className="p-0 block-example border border-0 border-dark rounded"
 										onClick={() => this.setState({ show: true })}
 									>
 										Contact Owner / Agent
