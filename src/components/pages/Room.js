@@ -34,20 +34,20 @@ class Room extends React.Component {
 	render() {
 		const { products, index } = this.state;
 		return (
-			<div className="row">
-				<div className="col-md-7 room ">
+			<div className="row py-4">
+				<div className="col-6 room ">
 					{products.map((item) => (
-						<div className="details" key={item._id}>
-							<div className="box">
+						<div className="details d-flex justify-content-around row mr-0 pr-0" key={item._id}>
+							<div className="col-2 col-md-1 box m-0 p-0">
 								<DetailsThumb images={item.src} tab={this.handleTab} myRef={this.myRef} />
 							</div>
-							<div className="big-img ">
-								<img src={item.src[index]} className="border border-white rounded" alt="" />
+							<div className="col-9 col-md-10 big-img m-0 ml-1 p-0 ">
+								<img src={item.src[index]} className="" alt="" />
 							</div>
 						</div>
 					))}
 				</div>
-				<div className="col py-4 my-2">
+				<div className="col-6">
 					<Row>
 						<Card>
 							<h5 className="mx-1 ">PROPERTY TYPE - {this.props.item.property_type}</h5>

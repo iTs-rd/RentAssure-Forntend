@@ -1,5 +1,5 @@
 .room {
-	width: 750px;
+	/* width: 750px; */
 }
 
 .details {
@@ -9,9 +9,9 @@
 }
 .details .big-img {
 	border-radius: 15px;
-	height: 600px;
-	max-width: 500px;
-	min-width: 290px;
+	/* height: 600px; */
+	/* max-width: 500px; */
+	/* min-width: 290px; */
 	overflow: hidden;
 	margin: 25px;
 }
@@ -19,7 +19,7 @@
 	border-color: white;
 	border-width: 100px;
 	width: 100%;
-	height: 100%;
+	/* height: 100%; */
 	max-height: 420px;
 	display: block;
 	object-fit: cover;
@@ -34,14 +34,14 @@
 .thumb {
 	width: 100%;
 	height: 400px;
-	display: grid;
+	/* display: grid; */
 	cursor: pointer;
-	margin: 15px 0;
+	/* margin: 15px 0; */
 }
 .thumb img {
 	margin: 5px;
-	width: 150px;
-	height: 100px;
+	width: 100%;
+	height: 10%;
 	display: block;
 	object-fit: cover;
 	border: 1px solid #ddd;
@@ -65,9 +65,9 @@
 
 @media (max-width: 500px) {
 	.thumb {
-		height: 50px;
+		/* height: 50px; */
 	}
 	.thumb img {
-		width: 50px;
+		/* width: 50px; */
 	}
 }
