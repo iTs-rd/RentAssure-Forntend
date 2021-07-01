@@ -4,25 +4,25 @@
 
 This project was build with the help of [React](https://reactjs.org) ,[Django](https://www.djangoproject.com/start/) & [Djano REST framework](https://www.django-rest-framework.org/).
 
-<a href="https://rentassure.herokuapp.com/"><img src="https://i.ibb.co/5L6QMyc/Screenshot-2021-07-01-at-20-14-45-Rent-Assure.png" />
+<a href="https://rentassure.herokuapp.com/"><img src="readme_img/1.png" />
 
 ## Some More Screenshots
 
 ### Login & Signup
 
-<img src="https://i.ibb.co/bmnmjq4/Screenshot-2021-07-01-at-21-12-01-Rent-Assure.png" />
+<img src="readme_img/2.png" />
 
-<img src="https://i.ibb.co/52PPvnm/Screenshot-2021-07-01-at-21-19-54-Rent-Assure.png" width="950" />
+<img src="readme_img/3.png" width="950" />
 
 ### About & ContactUs
 
-<img src="https://i.ibb.co/74XhdFF/Screenshot-2021-07-01-at-21-11-18-Rent-Assure.png" />
+<img src="readme_img/4.png" />
 
-<img src="https://i.ibb.co/NY6dHzW/Screenshot-2021-07-01-at-21-11-40-Rent-Assure.png" />
+<img src="readme_img/5.png" />
 
 ### Other
 
-<img src="https://i.ibb.co/W2qnGLG/other.jpg" />
+<img src="readme_img/6.jpg" />
 
 </a>
 
