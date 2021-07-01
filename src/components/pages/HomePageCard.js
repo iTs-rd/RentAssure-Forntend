@@ -67,7 +67,7 @@ function HomePageCard(props) {
 		};
 
 		return (
-			<div className="carditem row animatable bounceIn">
+			<div className="carditem row animatable bounceIn ">
 				<div className="col-12 col-md-4" style={{ padding: "0" }}>
 					<MyCard img1={item.img1} img2={item.img2} img3={item.img3} img4={item.img4} />
 				</div>
@@ -86,7 +86,7 @@ function HomePageCard(props) {
 					<div className="col-6 col-md-4 area d-flex f-small">
 						<div className="area-value f-large bold">{item.area}</div> sq.ft
 					</div>
-					<div className="col-6 col-md-4 furnishing">{item.furnished}</div>
+					<div className="col-6 col-md-4 f-large furnishing">{item.furnished}</div>
 					<div className="col-6 available-from f-small">
 						{/* Ready to move {new Date(item.available_from) } */}
 						Ready to move <span className="f-large d-flex">{item.available_from}</span>

@@ -27,6 +27,15 @@
 .homepagecard .f-large {
     font-size: 1rem;
 }
+@media (max-width: 991.98px) {
+    .homepagecard .f-small {
+        font-size: 1.5vh;
+    }
+    
+    .homepagecard .f-large {
+        font-size: 2vh;
+    } 
+}
 
 .homepagecard .area{
     align-items: baseline;
@@ -37,7 +46,7 @@
 }
 
 .homepagecard{
-    margin-inline: 2rem;
+    /* margin-inline: 2rem; */
 }
 
 .homepagecard .title{

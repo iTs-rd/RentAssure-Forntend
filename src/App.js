@@ -60,7 +60,7 @@ function App() {
 		});
 
 		return (
-			<div style={{ marginInline: "3rem" }}>
+			<div >
 				{/* <Slider /> */}
 				<div className="row">
 					<div className="col-3 d-none d-md-block">
