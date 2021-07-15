@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site": "rentassure",
     "public": "build",
     "ignore": [
       "firebase.json",
