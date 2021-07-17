@@ -4,7 +4,7 @@
 
 This project was build with the help of [React](https://reactjs.org) ,[Django](https://www.djangoproject.com/start/) & [Djano REST framework](https://www.django-rest-framework.org/).
 
-<a href="https://rentassure.herokuapp.com/"><img src="readme_img/1.png" />
+<a href="https://rentassure-bda5e.web.app/"><img src="readme_img/1.png" />
 
 ## Some More Screenshots
 
@@ -61,6 +61,6 @@ Before you install any packages, ensure your package list is up to date with:
 
 Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-The app is running live at [https://rentassure.herokuapp.com](https://rentassure.herokuapp.com). Patience recommended while opening:stuck_out_tongue_closed_eyes:
+The app is running live at [https://rentassure-bda5e.web.app/](https://rentassure-bda5e.web.app/). Patience recommended while opening:stuck_out_tongue_closed_eyes:
 
 Made in :heart: with Github & ReactJS.
