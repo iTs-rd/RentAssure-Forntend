@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import MyCard from "./MyCard";
 import "../css/homepage.css";
 import $ from "jquery";
+import Loading_page from "./loading_page";
 
 function HomePageCard(props) {
 	const [properties, setProperty] = useState([]);
@@ -101,7 +102,8 @@ function HomePageCard(props) {
 			</div>
 		);
 	}
-
+	if(properties.length===0)
+		return <Loading_page />
 	return <div className="homepagecard">{properties.map((property) => CreateCard(property))}</div>;
 }
 
