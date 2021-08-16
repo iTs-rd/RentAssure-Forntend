@@ -367,7 +367,7 @@ class AddProperty extends Component {
 					</Form.Row>
 
 					<h3 className="my-4">Other Facilities</h3>
-					<div class="addPropertyBG"></div>
+					{/* <div class="addPropertyBG"></div> */}
 
 					<Row className="my-3">
 						<Col md={3}>
