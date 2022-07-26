@@ -232,14 +232,14 @@ class EditUserProperty extends Component {
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="pin">
-							<Form.Label as="h5">6 . Pin Code</Form.Label>
-							<Form.Control name="pin" onChange={this.eventHandler} value={this.state.pin} id="pin" placeholder="Pin Code" />
+							<Form.Label as="h5">6 . Pin Code *</Form.Label>
+							<Form.Control name="pin" onChange={this.eventHandler} value={this.state.pin} id="pin" placeholder="Pin Code" required />
 						</Form.Group>
 					</Form.Row>
 					<Form.Row>
 						<Form.Group as={Col} controlId="owner_name">
-							<Form.Label as="h5">7 . Owner Name</Form.Label>
-							<Form.Control name="owner_name" onChange={this.eventHandler} value={this.state.owner_name} id="owner_name" placeholder="Owner Name" />
+							<Form.Label as="h5">7 . Owner Name*</Form.Label>
+							<Form.Control name="owner_name" onChange={this.eventHandler} value={this.state.owner_name} id="owner_name" placeholder="Owner Name" required />
 						</Form.Group>
 						<Form.Group as={Col} controlId="owner_phone_no1">
 							<Form.Label as="h5">8 . Owner Phone No.1*</Form.Label>
@@ -268,7 +268,7 @@ class EditUserProperty extends Component {
 					</Form.Row>
 					<Form.Row>
 						<Form.Group as={Col} controlId="posted_by">
-							<Form.Label as="h5">10 . Posted By*</Form.Label>
+							<Form.Label as="h5" >10 . Posted By*</Form.Label>
 							<Form.Control
 								as="select"
 								name="posted_by"
@@ -307,9 +307,9 @@ class EditUserProperty extends Component {
 								<img src={this.state.img1} alt="First" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img1">
-										<h6>Image 1*</h6>
+										<h6>Image 1</h6>
 									</label>
-									<input type="file" name="img1" class="form-control-file" id="img1" onChange={this.eventHandler} required />
+									<input type="file" name="img1" class="form-control-file" id="img1" onChange={this.eventHandler} />
 								</Form.Group>
 							</Form.Group>
 						</Col>
@@ -318,9 +318,9 @@ class EditUserProperty extends Component {
 								<img src={this.state.img2} alt="Second" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img2">
-										<h6>Image 2*</h6>
+										<h6>Image 2</h6>
 									</label>
-									<input type="file" name="img2" class="form-control-file" id="img2" onChange={this.eventHandler} required />
+									<input type="file" name="img2" class="form-control-file" id="img2" onChange={this.eventHandler} />
 								</Form.Group>
 							</Form.Group>
 						</Col>
@@ -415,7 +415,7 @@ class EditUserProperty extends Component {
 					</Form.Row>
 
 					<h3 className="my-4">Other Facilities</h3>
-					<div class="editUserPropertyBG"></div>
+					{/* <div class="editUserPropertyBG"></div> */}
 
 					<Row className="my-3">
 						<Col md={3}>
@@ -804,7 +804,7 @@ class EditUserProperty extends Component {
 								<Row>
 									<Col md={6}>
 										<Form.Label className="mx-1 my-1" as="h5">
-											Available From
+											Available From (YYYY-MM-DD)
 										</Form.Label>
 									</Col>
 									<Col md={6}>

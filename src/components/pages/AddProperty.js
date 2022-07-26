@@ -5,6 +5,19 @@ import "../css/addproperty.css";
 
 class AddProperty extends Component {
 	constructor(props) {
+		 const nowDate = () => {
+			const d = new Date();
+			var date = d.getFullYear() + "-"
+			if(d.getMonth()+1<10)
+				date+="0"+String(Number(d.getMonth())+1)+"-"
+			else
+				date+=String(Number(d.getMonth())+1)+"-"
+			if(d.getDate()<10)
+				date+="0"+d.getDate()
+			else
+				date+=d.getDate()
+			return date
+		}
 		super(props);
 		this.state = {
 			user: null,
@@ -19,7 +32,7 @@ class AddProperty extends Component {
 			bathroom: null,
 			balconies: null,
 			Kitchen: null,
-			area: null,
+			area: 0,
 			parking: false,
 			lift: false,
 			swimming_pool: false,
@@ -40,8 +53,8 @@ class AddProperty extends Component {
 			cleaning: null,
 			furnished: null,
 			available_for: null,
-			available_from: null,
-			rent: null,
+			available_from: nowDate(),
+			rent: 0,
 			additional_charge: null,
 			security_money: null,
 			one_time_charge: null,
@@ -185,14 +198,14 @@ class AddProperty extends Component {
 						</Form.Group>
 
 						<Form.Group as={Col} controlId="pin">
-							<Form.Label as="h5">6 . Pin Code</Form.Label>
-							<Form.Control name="pin" onChange={this.eventHandler} value={this.state.pin} id="pin" placeholder="Pin Code" />
+							<Form.Label as="h5">6 . Pin Code*</Form.Label>
+							<Form.Control name="pin" onChange={this.eventHandler} value={this.state.pin} id="pin" placeholder="Pin Code" required />
 						</Form.Group>
 					</Form.Row>
 					<Form.Row>
 						<Form.Group as={Col} controlId="owner_name">
-							<Form.Label as="h5">7 . Owner Name</Form.Label>
-							<Form.Control name="owner_name" onChange={this.eventHandler} value={this.state.owner_name} id="owner_name" placeholder="Owner Name" />
+							<Form.Label as="h5">7 . Owner Name*</Form.Label>
+							<Form.Control name="owner_name" onChange={this.eventHandler} value={this.state.owner_name} id="owner_name" placeholder="Owner Name" required />
 						</Form.Group>
 						<Form.Group as={Col} controlId="owner_phone_no1">
 							<Form.Label as="h5">8 . Owner Phone No.1*</Form.Label>
@@ -260,9 +273,9 @@ class AddProperty extends Component {
 								<img src={this.state.img1} alt="First" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img1">
-										<h6>Image 1*</h6>
+										<h6>Image 1</h6>
 									</label>
-									<input type="file" name="img1" class="form-control-file" id="img1" onChange={this.eventHandler} required />
+									<input type="file" name="img1" class="form-control-file" id="img1" onChange={this.eventHandler} />
 								</Form.Group>
 							</Form.Group>
 						</Col>
@@ -271,9 +284,9 @@ class AddProperty extends Component {
 								<img src={this.state.img2} alt="Second" className="boder border-dark border-top border-left" />
 								<Form.Group>
 									<label for="img2">
-										<h6>Image 2*</h6>
+										<h6>Image 2</h6>
 									</label>
-									<input type="file" name="img2" class="form-control-file" id="img2" onChange={this.eventHandler} required />
+									<input type="file" name="img2" class="form-control-file" id="img2" onChange={this.eventHandler} />
 								</Form.Group>
 							</Form.Group>
 						</Col>
@@ -367,7 +380,7 @@ class AddProperty extends Component {
 					</Form.Row>
 
 					<h3 className="my-4">Other Facilities</h3>
-					<div class="addPropertyBG"></div>
+					{/* <div class="addPropertyBG"></div> */}
 
 					<Row className="my-3">
 						<Col md={3}>
@@ -755,7 +768,7 @@ class AddProperty extends Component {
 								<Row>
 									<Col md={6}>
 										<Form.Label className="mx-1 my-1" as="h5">
-											Available From
+											Available From(YYYY-MM-DD)*
 										</Form.Label>
 									</Col>
 									<Col md={6}>
@@ -767,6 +780,7 @@ class AddProperty extends Component {
 											class="form-control"
 											id="available_from"
 											placeholder="Available From"
+											required
 										/>
 									</Col>
 								</Row>
